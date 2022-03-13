@@ -7,15 +7,25 @@
         mc:Ignorable="d"
          Title="Составление номенклатуры дел" Height="650" Width="800">
     <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="97" VerticalAlignment="Top" Width="792"/>
-        <TabControl HorizontalAlignment="Left" Height="94" Margin="3,3,0,0" VerticalAlignment="Top" Width="789">
-            <TabItem Header="TabItem">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="792"/>
+        <TabControl HorizontalAlignment="Left" Height="61" Margin="3,3,0,0" VerticalAlignment="Top" Width="789">
+            <TabItem Header="Файл">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem Header="TabItem">
+            <TabItem Header="Правка">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Управление">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Печать">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Справка">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
+        <DataGrid HorizontalAlignment="Left" Height="496" Margin="0,64,0,0" VerticalAlignment="Top" Width="792"/>
 
     </Grid>
 </Window>

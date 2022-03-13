@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище gr682_gnmModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Archive">
+          <Key>
+            <PropertyRef Name="ID_Archive" />
+          </Key>
+          <Property Name="ID_Archive" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Сase_index" Type="int" Nullable="false" />
+          <Property Name="YearCreate" Type="date" Nullable="false" />
+          <Property Name="YearFinish" Type="date" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Number_of_cases" Type="int" Nullable="false" />
+          <Property Name="Storage_article_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Storage_article">
+          <Key>
+            <PropertyRef Name="ID_Storage_article" />
+          </Key>
+          <Property Name="ID_Storage_article" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Shelf_life_by_article" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Note_on_storage_article" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Archive__Storage__636EBA21">
+          <End Role="Storage_article" Type="Self.Storage_article" Multiplicity="1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage_article">
+              <PropertyRef Name="ID_Storage_article" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="Storage_article_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище gr682_gnmModelContainer">
+          <EntitySet Name="Archive" EntityType="Self.Archive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storage_article" EntityType="Self.Storage_article" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Archive__Storage__636EBA21" Association="Self.FK__Archive__Storage__636EBA21">
+            <End Role="Storage_article" EntitySet="Storage_article" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gr682_gnmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Archive">
+          <Key>
+            <PropertyRef Name="ID_Archive" />
+          </Key>
+          <Property Name="ID_Archive" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Сase_index" Type="Int32" Nullable="false" />
+          <Property Name="YearCreate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="YearFinish" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Number_of_cases" Type="Int32" Nullable="false" />
+          <Property Name="Storage_article_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Storage_article" Relationship="Self.FK__Archive__Storage__636EBA21" FromRole="Archive" ToRole="Storage_article" />
+        </EntityType>
+        <EntityType Name="Storage_article">
+          <Key>
+            <PropertyRef Name="ID_Storage_article" />
+          </Key>
+          <Property Name="ID_Storage_article" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Shelf_life_by_article" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note_on_storage_article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Archive" Relationship="Self.FK__Archive__Storage__636EBA21" FromRole="Storage_article" ToRole="Archive" />
+        </EntityType>
+        <Association Name="FK__Archive__Storage__636EBA21">
+          <End Role="Storage_article" Type="Self.Storage_article" Multiplicity="1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage_article">
+              <PropertyRef Name="ID_Storage_article" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="Storage_article_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gr682_gnmEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Archive" EntityType="Self.Archive" />
+          <EntitySet Name="Storage_article" EntityType="Self.Storage_article" />
+          <AssociationSet Name="FK__Archive__Storage__636EBA21" Association="Self.FK__Archive__Storage__636EBA21">
+            <End Role="Storage_article" EntitySet="Storage_article" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище gr682_gnmModelContainer" CdmEntityContainer="gr682_gnmEntities">
+          <EntitySetMapping Name="Archive">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Archive">
+              <MappingFragment StoreEntitySet="Archive">
+                <ScalarProperty Name="ID_Archive" ColumnName="ID_Archive" />
+                <ScalarProperty Name="Сase_index" ColumnName="Сase_index" />
+                <ScalarProperty Name="YearCreate" ColumnName="YearCreate" />
+                <ScalarProperty Name="YearFinish" ColumnName="YearFinish" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Number_of_cases" ColumnName="Number_of_cases" />
+                <ScalarProperty Name="Storage_article_ID" ColumnName="Storage_article_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storage_article">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Storage_article">
+              <MappingFragment StoreEntitySet="Storage_article">
+                <ScalarProperty Name="ID_Storage_article" ColumnName="ID_Storage_article" />
+                <ScalarProperty Name="Shelf_life_by_article" ColumnName="Shelf_life_by_article" />
+                <ScalarProperty Name="Note_on_storage_article" ColumnName="Note_on_storage_article" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

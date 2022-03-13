@@ -24,5 +24,20 @@ namespace Архивариус
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Creation_of_nomenclature_cases(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Men_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

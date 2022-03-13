@@ -5,20 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-      Title="Номенклатурный заголовок дела" Height="550" Width="800">
+      Title="Номенклатурный заголовок дела" Height="600" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="89" Margin="120,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="120,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="160" Margin="30,349,0,0" VerticalAlignment="Top" Width="738"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="144,367,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="144,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="144,470,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
+        <TextBox Name="Index" HorizontalAlignment="Left" Height="23" Margin="120,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="Title" HorizontalAlignment="Left" Height="89" Margin="120,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
+        <TextBox Name="Note" HorizontalAlignment="Left" Height="23" Margin="120,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
+        <TextBox Name="Shelf" HorizontalAlignment="Left" Height="23" Margin="120,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="160" Margin="10,349,0,0" VerticalAlignment="Top" Width="772">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="62,65,0,0"><Run Text="Срок хранения "/><LineBreak/><Run Text="по статье"/><Run Text=":"/></TextBlock>
+        </Border>
+        <!--<TextBox HorizontalAlignment="Left" Height="23" Margin="169,368,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>-->
+        <ComboBox Name="Storage_articleCombo" HorizontalAlignment="Left" DisplayMemberPath="Shelf_life_by_article" FontSize="18" Margin="169,360,0,0" VerticalAlignment="Top" Width="605" Height="36"/>
+        <TextBox Name="Shelf_life_by_article" HorizontalAlignment="Left" Height="23" Margin="169,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
+        <TextBox Name="Note_on_storage_article" HorizontalAlignment="Left" Height="23" Margin="169,471,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
         <TextBlock HorizontalAlignment="Left" Margin="41,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Индекс дела"/><Run Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="24,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Заголовок дела"/><Run Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="39,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Примечание"/><Run Text=":"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="28,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Срок хранения"/><Run Text=":"/></TextBlock>
-
+        <TextBlock HorizontalAlignment="Left" Margin="28,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Срок хранения"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="70,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Статья хранения"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="41,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="133"><Run Text="Примечание к статье хранения"/><Run Text=":"/></TextBlock>
+        <TextBox Name="Number" HorizontalAlignment="Left" Height="23" Margin="204,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Кол - во дел: (томов, частей)"/><Run Text=":"/></TextBlock>
+        <DatePicker Name="Start" HorizontalAlignment="Left" Margin="376,57,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="295,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Год создания"/><Run Text=":"/></TextBlock>
+        <DatePicker Name="Finish" HorizontalAlignment="Left" Margin="621,57,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="522,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Год завершения"/><Run Text=":"/></TextBlock>
+        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="690,523,0,0" VerticalAlignment="Top" Width="92" Height="36" Click="Save"/>
+        <!--<Label Name="Shelf_life_by_article" HorizontalAlignment="Left" Margin="169,415,0,0" VerticalAlignment="Top" Width="134" Height="32"/>
+        <Label Name="Note_on_storage_article" HorizontalAlignment="Left" Margin="169,463,0,0" VerticalAlignment="Top" Width="134" Height="32"/>-->
     </Grid>
 </Window>
