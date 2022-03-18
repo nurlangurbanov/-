@@ -25,7 +25,7 @@ namespace Архивариус
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Archive> Archive { get; set; }
+        public virtual DbSet<Archive_work> Archive_work { get; set; }
         public virtual DbSet<Storage_article> Storage_article { get; set; }
     }
 }

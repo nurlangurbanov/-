@@ -17,14 +17,15 @@ namespace Архивариус
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Storage_article()
         {
-            this.Archive = new HashSet<Archive>();
+            this.Archive_work = new HashSet<Archive_work>();
         }
     
         public int ID_Storage_article { get; set; }
+        public string Storage_article1 { get; set; }
         public string Shelf_life_by_article { get; set; }
         public string Note_on_storage_article { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Archive> Archive { get; set; }
+        public virtual ICollection<Archive_work> Archive_work { get; set; }
     }
 }

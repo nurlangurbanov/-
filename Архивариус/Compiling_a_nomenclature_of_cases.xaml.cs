@@ -19,7 +19,6 @@ namespace Архивариус
     /// </summary>
     public partial class Compiling_a_nomenclature_of_cases : Window
     {
-        gr682_gnmEntities db = new gr682_gnmEntities();
         public Compiling_a_nomenclature_of_cases()
         {
             InitializeComponent();
@@ -34,9 +33,8 @@ namespace Архивариус
             }
             else
             {
-                //var role = Helper.GetContext().RoleUsers.FirstOrDefault(x => x.RoleName == rolecombo.Text);
                 var ID_Storage_article = Helper.GetContext().Storage_article.FirstOrDefault(x => x.Shelf_life_by_article == Storage_articleCombo.Text);
-                Archive users = new Archive
+                Archive_work users = new Archive_work
                 {
                     Сase_index = Convert.ToInt32(Index.Text),
                     YearCreate = Convert.ToDateTime(Start.SelectedDate),
@@ -46,7 +44,7 @@ namespace Архивариус
                     Number_of_cases = Convert.ToInt32(Number.Text),
                     Storage_article_ID = ID_Storage_article.ID_Storage_article,
                 };
-                Helper.GetContext().Archive.Add(users);
+                Helper.GetContext().Archive_work.Add(users);
                 Helper.GetContext().SaveChanges();
                 MessageBox.Show("Документ успешно добавлен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                 Index.Text = "";
@@ -54,6 +52,7 @@ namespace Архивариус
                 Shelf.Text = "";
                 Number.Text = "";
                 Storage_articleCombo.Text = "";
+                //Shelf_life_by_articletxt.Text = Shelf_life_by_article
             }
         }
     }

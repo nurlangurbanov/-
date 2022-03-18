@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-        Title="Архивариус 1.0" Height="400" Width="700">
+        Title="Архивариус 1.0" Height="450" Width="700">
     <Grid>
         <Button x:Name="Document" HorizontalAlignment="Left" Margin="46,58,0,0" VerticalAlignment="Top" Width="51" Background="White" Click="Creation_of_nomenclature_cases" Height="50">
             <StackPanel Orientation="Horizontal">
@@ -27,13 +27,19 @@
                 <Image x:Name="Menfgjn" Source="Men.png" Margin="0,0,5,0" Width="48" Height="48" RenderTransformOrigin="0.5,0.5"/>
             </StackPanel>
         </Button>
+        <Button x:Name="ffn" HorizontalAlignment="Left" Margin="46,335,0,0" VerticalAlignment="Top" Width="51" Background="White" Click="Men_Click" Height="50">
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="Mn" Source="Men.png" Margin="0,0,5,0" Width="48" Height="48" RenderTransformOrigin="0.5,0.5"/>
+            </StackPanel>
+        </Button>
         <Label Content="Составление номенклатуры дел" HorizontalAlignment="Left" Margin="113,71,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
         <Label Content="Формирование и оформление дел" HorizontalAlignment="Left" Margin="113,136,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
         <Label Content="Управление архивом" HorizontalAlignment="Left" Margin="113,205,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
         <Label Content="Поиск документов" HorizontalAlignment="Left" Margin="113,274,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
         <!--<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="369" Margin="428,0,0,0" VerticalAlignment="Top" Width="264">
         </Border>-->
-        <Button Content="Настройки системы" Margin="486,196,42,123" Click="Button_Click"/>
-        <Button Content="Выход" Margin="486,265,42,64" Click="Button_Click"/>
+        <Button Content="Настройки системы" Margin="477,235,51,134" Click="Button_Click"/>
+        <Button Content="Выход" Margin="477,305,51,64" Click="Button_Click"/>
+        <Label Content="Списание документов" HorizontalAlignment="Left" Margin="113,344,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
     </Grid>
 </Window>

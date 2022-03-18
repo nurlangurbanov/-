@@ -25,7 +25,19 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <DataGrid HorizontalAlignment="Left" Height="496" Margin="0,64,0,0" VerticalAlignment="Top" Width="792"/>
-
+        <DataGrid x:Name="dtArchive" HorizontalAlignment="Left" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" Height="488" Margin="5,69,0,0" VerticalAlignment="Top" Width="777">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Visibility="Hidden" Binding="{Binding ID_Archive}"/>
+                <DataGridTextColumn Header="Индекс дела" Binding="{Binding Сase_index}"/>
+                <DataGridTextColumn Header="Заголовок дела" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Статья хранения" Binding="{Binding Storage_article.Storage_article1}"/>
+                <DataGridTextColumn Header="Срок хранения" Binding="{Binding Storage_article.Shelf_life_by_article}"/>
+                <DataGridTextColumn Header="Кол - во дел:" Binding="{Binding Number_of_cases}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Добавить дело" HorizontalAlignment="Left" Margin="625,573,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Insert"/>
+        <Button Content="Изменить" HorizontalAlignment="Left" Margin="454,573,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Update"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Margin="278,573,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Delete"/>
+        <TextBox Name="ID" HorizontalAlignment="Left" Height="23" Margin="120,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
     </Grid>
 </Window>

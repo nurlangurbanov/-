@@ -64,8 +64,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Archive.cs">
+    <Compile Include="Archive_work.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Creation_article.xaml.cs">
+      <DependentUpon>Creation_article.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Model1.cs">
@@ -77,6 +80,10 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Page Include="Compiling_a_nomenclature_of_cases.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Creation_article.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

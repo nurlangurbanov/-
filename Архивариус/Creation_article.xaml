@@ -1,0 +1,18 @@
+﻿<Window x:Class="Архивариус.Creation_article"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Архивариус"
+        mc:Ignorable="d"
+        Title="Добавление статьи хранения" Height="300" Width="400">
+    <Grid>
+        <TextBox Name="Storage_articletxt" HorizontalAlignment="Left" Height="46" Margin="182,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
+        <TextBox Name="Shelf_life_by_articletxt" HorizontalAlignment="Left" Height="46" Margin="182,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
+        <TextBox Name="Note_on_storage_articletxt" HorizontalAlignment="Left" Height="46" Margin="182,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
+        <TextBlock HorizontalAlignment="Left" Margin="70,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="94"><Run Text="Статья хранения"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="70,86,0,0"><Run Text="Срок хранения "/><LineBreak/><Run Text="по статье"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="44,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="133"><Run Text="Примечание к статье хранения"/><Run Text=":"/></TextBlock>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="120,223,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Save"/>
+    </Grid>
+</Window>

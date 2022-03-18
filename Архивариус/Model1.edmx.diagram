@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0419aae8bda24097b20a154d0dc721a1" Name="Diagram1">
-        <EntityTypeShape EntityType="gr682_gnmModel.Archive" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="gr682_gnmModel.Storage_article" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <AssociationConnector Association="gr682_gnmModel.FK__Archive__Storage__636EBA21" ManuallyRouted="false" />
+      <Diagram DiagramId="9635fb91595c44cba2ed7a47c0a365c5" Name="Diagram1">
+        <EntityTypeShape EntityType="gr682_gnmModel.Archive_work" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Storage_article" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="gr682_gnmModel.FK__Archive_w__Stora__6CF8245B" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,7 +12,7 @@ namespace Архивариус
     using System;
     using System.Collections.Generic;
     
-    public partial class Archive
+    public partial class Archive_work
     {
         public int ID_Archive { get; set; }
         public int Сase_index { get; set; }

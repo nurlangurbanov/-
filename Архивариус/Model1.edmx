@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище gr682_gnmModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Archive">
+        <EntityType Name="Archive_work">
           <Key>
             <PropertyRef Name="ID_Archive" />
           </Key>
@@ -23,27 +23,28 @@
             <PropertyRef Name="ID_Storage_article" />
           </Key>
           <Property Name="ID_Storage_article" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Storage_article" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Shelf_life_by_article" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Note_on_storage_article" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Archive__Storage__636EBA21">
+        <Association Name="FK__Archive_w__Stora__6CF8245B">
           <End Role="Storage_article" Type="Self.Storage_article" Multiplicity="1" />
-          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <End Role="Archive_work" Type="Self.Archive_work" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Storage_article">
               <PropertyRef Name="ID_Storage_article" />
             </Principal>
-            <Dependent Role="Archive">
+            <Dependent Role="Archive_work">
               <PropertyRef Name="Storage_article_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище gr682_gnmModelContainer">
-          <EntitySet Name="Archive" EntityType="Self.Archive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Archive_work" EntityType="Self.Archive_work" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storage_article" EntityType="Self.Storage_article" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Archive__Storage__636EBA21" Association="Self.FK__Archive__Storage__636EBA21">
+          <AssociationSet Name="FK__Archive_w__Stora__6CF8245B" Association="Self.FK__Archive_w__Stora__6CF8245B">
             <End Role="Storage_article" EntitySet="Storage_article" />
-            <End Role="Archive" EntitySet="Archive" />
+            <End Role="Archive_work" EntitySet="Archive_work" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -51,7 +52,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="gr682_gnmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Archive">
+        <EntityType Name="Archive_work">
           <Key>
             <PropertyRef Name="ID_Archive" />
           </Key>
@@ -63,35 +64,36 @@
           <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Number_of_cases" Type="Int32" Nullable="false" />
           <Property Name="Storage_article_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Storage_article" Relationship="Self.FK__Archive__Storage__636EBA21" FromRole="Archive" ToRole="Storage_article" />
+          <NavigationProperty Name="Storage_article" Relationship="Self.FK__Archive_w__Stora__6CF8245B" FromRole="Archive_work" ToRole="Storage_article" />
         </EntityType>
         <EntityType Name="Storage_article">
           <Key>
             <PropertyRef Name="ID_Storage_article" />
           </Key>
           <Property Name="ID_Storage_article" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Storage_article1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Shelf_life_by_article" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Note_on_storage_article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Archive" Relationship="Self.FK__Archive__Storage__636EBA21" FromRole="Storage_article" ToRole="Archive" />
+          <NavigationProperty Name="Archive_work" Relationship="Self.FK__Archive_w__Stora__6CF8245B" FromRole="Storage_article" ToRole="Archive_work" />
         </EntityType>
-        <Association Name="FK__Archive__Storage__636EBA21">
+        <Association Name="FK__Archive_w__Stora__6CF8245B">
           <End Role="Storage_article" Type="Self.Storage_article" Multiplicity="1" />
-          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <End Role="Archive_work" Type="Self.Archive_work" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Storage_article">
               <PropertyRef Name="ID_Storage_article" />
             </Principal>
-            <Dependent Role="Archive">
+            <Dependent Role="Archive_work">
               <PropertyRef Name="Storage_article_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="gr682_gnmEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Archive" EntityType="Self.Archive" />
+          <EntitySet Name="Archive_work" EntityType="Self.Archive_work" />
           <EntitySet Name="Storage_article" EntityType="Self.Storage_article" />
-          <AssociationSet Name="FK__Archive__Storage__636EBA21" Association="Self.FK__Archive__Storage__636EBA21">
+          <AssociationSet Name="FK__Archive_w__Stora__6CF8245B" Association="Self.FK__Archive_w__Stora__6CF8245B">
             <End Role="Storage_article" EntitySet="Storage_article" />
-            <End Role="Archive" EntitySet="Archive" />
+            <End Role="Archive_work" EntitySet="Archive_work" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -100,9 +102,9 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище gr682_gnmModelContainer" CdmEntityContainer="gr682_gnmEntities">
-          <EntitySetMapping Name="Archive">
-            <EntityTypeMapping TypeName="gr682_gnmModel.Archive">
-              <MappingFragment StoreEntitySet="Archive">
+          <EntitySetMapping Name="Archive_work">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Archive_work">
+              <MappingFragment StoreEntitySet="Archive_work">
                 <ScalarProperty Name="ID_Archive" ColumnName="ID_Archive" />
                 <ScalarProperty Name="Сase_index" ColumnName="Сase_index" />
                 <ScalarProperty Name="YearCreate" ColumnName="YearCreate" />
@@ -118,6 +120,7 @@
             <EntityTypeMapping TypeName="gr682_gnmModel.Storage_article">
               <MappingFragment StoreEntitySet="Storage_article">
                 <ScalarProperty Name="ID_Storage_article" ColumnName="ID_Storage_article" />
+                <ScalarProperty Name="Storage_article1" ColumnName="Storage_article" />
                 <ScalarProperty Name="Shelf_life_by_article" ColumnName="Shelf_life_by_article" />
                 <ScalarProperty Name="Note_on_storage_article" ColumnName="Note_on_storage_article" />
               </MappingFragment>
