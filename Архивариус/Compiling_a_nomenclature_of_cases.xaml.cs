@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace Архивариус
 {
@@ -19,9 +21,15 @@ namespace Архивариус
     /// </summary>
     public partial class Compiling_a_nomenclature_of_cases : Window
     {
-        public Compiling_a_nomenclature_of_cases()
+        private Archive_work _currentArchive = new Archive_work();
+
+        public Compiling_a_nomenclature_of_cases(Archive_work selectedArchive)
         {
             InitializeComponent();
+
+            if (selectedArchive != null)
+                _currentArchive = selectedArchive;
+
             Storage_articleCombo.ItemsSource = Helper.GetContext().Storage_article.ToList();
         }
 
@@ -33,8 +41,8 @@ namespace Архивариус
             }
             else
             {
-                var ID_Storage_article = Helper.GetContext().Storage_article.FirstOrDefault(x => x.Shelf_life_by_article == Storage_articleCombo.Text);
-                Archive_work users = new Archive_work
+                var ID_Storage_article = Helper.GetContext().Storage_article.FirstOrDefault(x => x.Storage_article1 == Storage_articleCombo.Text);
+                Archive_work aw = new Archive_work
                 {
                     Сase_index = Convert.ToInt32(Index.Text),
                     YearCreate = Convert.ToDateTime(Start.SelectedDate),
@@ -44,7 +52,7 @@ namespace Архивариус
                     Number_of_cases = Convert.ToInt32(Number.Text),
                     Storage_article_ID = ID_Storage_article.ID_Storage_article,
                 };
-                Helper.GetContext().Archive_work.Add(users);
+                Helper.GetContext().Archive_work.Add(aw);
                 Helper.GetContext().SaveChanges();
                 MessageBox.Show("Документ успешно добавлен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                 Index.Text = "";
@@ -54,6 +62,13 @@ namespace Архивариус
                 Storage_articleCombo.Text = "";
                 //Shelf_life_by_articletxt.Text = Shelf_life_by_article
             }
+        }
+
+        private void Insert_article(object sender, RoutedEventArgs e)
+        {
+            Creation_article ca = new Creation_article();
+            ca.ShowDialog();
+            this.Show();
         }
     }
 }

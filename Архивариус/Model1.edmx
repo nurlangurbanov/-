@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище gr682_gnmModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище gr682_gnmModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Archive_work">
           <Key>
             <PropertyRef Name="ID_Archive" />
@@ -17,6 +17,25 @@
           <Property Name="Note" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Number_of_cases" Type="int" Nullable="false" />
           <Property Name="Storage_article_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reg">
+          <Key>
+            <PropertyRef Name="ID_Reg" />
+          </Key>
+          <Property Name="ID_Reg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role_ID" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Storage_article">
           <Key>
@@ -39,16 +58,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reg_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Reg" Type="Self.Reg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Reg">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище gr682_gnmModelContainer">
           <EntitySet Name="Archive_work" EntityType="Self.Archive_work" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reg" EntityType="Self.Reg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storage_article" EntityType="Self.Storage_article" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Archive_w__Stora__6CF8245B" Association="Self.FK__Archive_w__Stora__6CF8245B">
             <End Role="Storage_article" EntitySet="Storage_article" />
             <End Role="Archive_work" EntitySet="Archive_work" />
           </AssociationSet>
+          <AssociationSet Name="FK_Reg_Role" Association="Self.FK_Reg_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Reg" EntitySet="Reg" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="gr682_gnmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -95,7 +131,46 @@
             <End Role="Storage_article" EntitySet="Storage_article" />
             <End Role="Archive_work" EntitySet="Archive_work" />
           </AssociationSet>
+          <EntitySet Name="Reg" EntityType="gr682_gnmModel.Reg" />
+          <EntitySet Name="Role" EntityType="gr682_gnmModel.Role" />
+          <AssociationSet Name="FK_Reg_Role" Association="gr682_gnmModel.FK_Reg_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Reg" EntitySet="Reg" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Reg">
+          <Key>
+            <PropertyRef Name="ID_Reg" />
+          </Key>
+          <Property Name="ID_Reg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="gr682_gnmModel.FK_Reg_Role" FromRole="Reg" ToRole="Role" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Reg" Relationship="gr682_gnmModel.FK_Reg_Role" FromRole="Role" ToRole="Reg" />
+        </EntityType>
+        <Association Name="FK_Reg_Role">
+          <End Type="gr682_gnmModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="gr682_gnmModel.Reg" Role="Reg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Reg">
+              <PropertyRef Name="Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -123,6 +198,27 @@
                 <ScalarProperty Name="Storage_article1" ColumnName="Storage_article" />
                 <ScalarProperty Name="Shelf_life_by_article" ColumnName="Shelf_life_by_article" />
                 <ScalarProperty Name="Note_on_storage_article" ColumnName="Note_on_storage_article" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reg">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Reg">
+              <MappingFragment StoreEntitySet="Reg">
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="ID_Reg" ColumnName="ID_Reg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

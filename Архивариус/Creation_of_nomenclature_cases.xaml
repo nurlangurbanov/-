@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-         Title="Составление номенклатуры дел" Height="650" Width="800">
+         Title="Составление номенклатуры дел" WindowStartupLocation="CenterScreen" Height="650" Width="800">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="792"/>
         <TabControl HorizontalAlignment="Left" Height="61" Margin="3,3,0,0" VerticalAlignment="Top" Width="789">
@@ -18,7 +18,7 @@
             <TabItem Header="Управление">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem Header="Печать">
+            <TabItem Header="Экспорт">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="Справка">
@@ -38,6 +38,7 @@
         <Button Content="Добавить дело" HorizontalAlignment="Left" Margin="625,573,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Insert"/>
         <Button Content="Изменить" HorizontalAlignment="Left" Margin="454,573,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Update"/>
         <Button Content="Удалить" HorizontalAlignment="Left" Margin="278,573,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Delete"/>
+        <Button Content="Печать" HorizontalAlignment="Left" Margin="5,573,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Print"/>
         <TextBox Name="ID" HorizontalAlignment="Left" Height="23" Margin="120,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
     </Grid>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-        Title="Добавление статьи хранения" Height="300" Width="400">
+        Title="Добавление статьи хранения" WindowStartupLocation="CenterScreen" Height="300" Width="400">
     <Grid>
         <TextBox Name="Storage_articletxt" HorizontalAlignment="Left" Height="46" Margin="182,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
         <TextBox Name="Shelf_life_by_articletxt" HorizontalAlignment="Left" Height="46" Margin="182,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
