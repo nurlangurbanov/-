@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace Архивариус
 {
@@ -81,6 +83,37 @@ namespace Архивариус
                 dtArchive.Arrange(new Rect(5, 5, pageSize.Width, pageSize.Height));
                 Printdlg.PrintVisual(dtArchive, Title);
             }
+        }
+
+        private void Excel_export(object sender, RoutedEventArgs e)
+        {
+            Excel.Application excel = new Excel.Application();
+
+            Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Excel.Worksheet sheet1 = (Excel.Worksheet)workbook.Sheets[1];
+
+            for (int j = 0; j < dtArchive.Columns.Count; j++)
+            {
+                Excel.Range myRange = (Excel.Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = dtArchive.Columns[j].Header;
+            }
+            for (int i = 0; i < dtArchive.Columns.Count; i++)
+            {
+                for (int j = 0; j < dtArchive.Items.Count; j++)
+                {
+                    TextBlock b = dtArchive.Columns[i].GetCellContent(dtArchive.Items[j]) as TextBlock;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
+            }
+            excel.Visible = true;
+        }
+
+        private void Word_export(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

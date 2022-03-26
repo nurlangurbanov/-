@@ -11,8 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Excel = Microsoft.Office.Interop.Excel;
-using Word = Microsoft.Office.Interop.Word;
 
 namespace Архивариус
 {
@@ -60,7 +58,6 @@ namespace Архивариус
                 Shelf.Text = "";
                 Number.Text = "";
                 Storage_articleCombo.Text = "";
-                //Shelf_life_by_articletxt.Text = Shelf_life_by_article
             }
         }
 

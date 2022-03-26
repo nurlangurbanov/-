@@ -19,7 +19,10 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="Экспорт">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Excel" HorizontalAlignment="Left" Margin="1,2,0,0" VerticalAlignment="Top" Width="116" Height="30" Click="Excel_export"/>
+                    <Button Content="Word" HorizontalAlignment="Left" Margin="133,2,0,0" VerticalAlignment="Top" Width="116" Height="30" Click="Word_export"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Справка">
                 <Grid Background="#FFE5E5E5"/>
