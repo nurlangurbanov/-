@@ -35,7 +35,7 @@ namespace Архивариус
 
         private void Insert(object sender, RoutedEventArgs e)
         {
-            Compiling_a_nomenclature_of_cases cc = new Compiling_a_nomenclature_of_cases((sender as Button).DataContext as Archive_work);
+            Compiling_a_nomenclature_of_cases cc = new Compiling_a_nomenclature_of_cases();
             cc.ShowDialog();
             this.Show();
             Load();
@@ -43,10 +43,20 @@ namespace Архивариус
 
         private void Update(object sender, RoutedEventArgs e)
         {
-            //var Archive = dtArchive.SelectedItems.Cast<Archive_work>().ToList();
-            //Compiling_a_nomenclature_of_cases cc = new Compiling_a_nomenclature_of_cases((sender as Button).DataContext as Archive_work);
-            //cc.Show();
-            
+            Compiling_a_nomenclature_of_cases cc = new Compiling_a_nomenclature_of_cases();
+            Archive_work worker = (Archive_work)dtArchive.SelectedItem;
+            cc.Start.SelectedDate = worker.YearCreate;
+            cc.Finish.SelectedDate = worker.YearFinish;
+            cc.Title.Text = worker.Title;
+            cc.Note.Text = worker.Note;
+            cc.Number.Text = Convert.ToString(worker.Number_of_cases);
+            cc.Storage_articleCombo.SelectedItem = worker.Storage_article;
+            cc.ShowDialog();
+            //if (worker.ID_Archive != 0)
+            //{
+            //    worker.ID_Archive = 0;
+            //}
+            Helper.GetContext().SaveChanges();
             Load();
         }
 
@@ -103,9 +113,13 @@ namespace Архивариус
             {
                 for (int j = 0; j < dtArchive.Items.Count; j++)
                 {
-                    TextBlock b = dtArchive.Columns[i].GetCellContent(dtArchive.Items[j]) as TextBlock;
-                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
-                    myRange.Value2 = b.Text;
+                    //TextBlock b = dtArchive.Columns[i].GetCellContent(dtArchive.Items[j]) as TextBlock;
+                    //Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    //myRange.Value2 = b.Text;
+
+                    Excel.Range sumRange = sheet1.Range[sheet1.Cells[1][3], sheet1.Cells[5][3]];
+                    sumRange.Merge();
+                    sumRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                 }
             }
             excel.Visible = true;
@@ -114,6 +128,20 @@ namespace Архивариус
         private void Word_export(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Extradition_Click(object sender, RoutedEventArgs e)
+        {
+            Adding_a_checkout Aac = new Adding_a_checkout();
+            Archive_work worker = (Archive_work)dtArchive.SelectedItem;
+            Aac.Archive_IDtxt.Text = Convert.ToString(worker.ID_Archive);
+            Aac.Start.SelectedDate = worker.YearCreate;
+            Aac.Finish.SelectedDate = worker.YearFinish;
+            Aac.Title.Text = worker.Title;
+            Aac.Number.Text = Convert.ToString(worker.Number_of_cases);
+            Aac.ShowDialog();
+            Helper.GetContext().SaveChanges();
+            Load();
         }
     }
 }

@@ -22,6 +22,12 @@ namespace Архивариус
         public Issuance_for_temporary_use()
         {
             InitializeComponent();
+            Load();
+        }
+
+        public void Load()
+        {
+            dtIssuance.ItemsSource = Helper.GetContext().Issuance.ToList();
         }
     }
 }

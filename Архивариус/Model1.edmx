@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище gr682_gnmModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище gr682_gnmModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Archive_work">
           <Key>
             <PropertyRef Name="ID_Archive" />
@@ -14,9 +14,28 @@
           <Property Name="YearCreate" Type="date" Nullable="false" />
           <Property Name="YearFinish" Type="date" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Note" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" />
           <Property Name="Number_of_cases" Type="int" Nullable="false" />
           <Property Name="Storage_article_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Authorized_user_role">
+          <Key>
+            <PropertyRef Name="ID_Authorized_user_role" />
+          </Key>
+          <Property Name="ID_Authorized_user_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reg_ID" Type="int" Nullable="false" />
+          <Property Name="Date_authorized_user_role" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Issuance">
+          <Key>
+            <PropertyRef Name="ID_Issuance_index" />
+          </Key>
+          <Property Name="ID_Issuance_index" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Archive_ID" Type="int" Nullable="false" />
+          <Property Name="Date_of_issue" Type="date" Nullable="false" />
+          <Property Name="Date_return" Type="date" Nullable="false" />
+          <Property Name="To_whom_issued" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Reg_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Reg">
           <Key>
@@ -46,6 +65,16 @@
           <Property Name="Shelf_life_by_article" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Note_on_storage_article" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <Association Name="FK__Archive_w__Stora__6CF8245B">
           <End Role="Storage_article" Type="Self.Storage_article" Multiplicity="1" />
           <End Role="Archive_work" Type="Self.Archive_work" Multiplicity="*" />
@@ -55,6 +84,42 @@
             </Principal>
             <Dependent Role="Archive_work">
               <PropertyRef Name="Storage_article_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Authorize__Reg_I__0A888742">
+          <End Role="Reg" Type="Self.Reg" Multiplicity="1" />
+          <End Role="Authorized_user_role" Type="Self.Authorized_user_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reg">
+              <PropertyRef Name="ID_Reg" />
+            </Principal>
+            <Dependent Role="Authorized_user_role">
+              <PropertyRef Name="Reg_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Issuance__Archiv__7C3A67EB">
+          <End Role="Archive_work" Type="Self.Archive_work" Multiplicity="1" />
+          <End Role="Issuance" Type="Self.Issuance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archive_work">
+              <PropertyRef Name="ID_Archive" />
+            </Principal>
+            <Dependent Role="Issuance">
+              <PropertyRef Name="Archive_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Issuance__Reg_ID__7D2E8C24">
+          <End Role="Reg" Type="Self.Reg" Multiplicity="1" />
+          <End Role="Issuance" Type="Self.Issuance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reg">
+              <PropertyRef Name="ID_Reg" />
+            </Principal>
+            <Dependent Role="Issuance">
+              <PropertyRef Name="Reg_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -72,19 +137,35 @@
         </Association>
         <EntityContainer Name="Хранилище gr682_gnmModelContainer">
           <EntitySet Name="Archive_work" EntityType="Self.Archive_work" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Authorized_user_role" EntityType="Self.Authorized_user_role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Issuance" EntityType="Self.Issuance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reg" EntityType="Self.Reg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storage_article" EntityType="Self.Storage_article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Archive_w__Stora__6CF8245B" Association="Self.FK__Archive_w__Stora__6CF8245B">
             <End Role="Storage_article" EntitySet="Storage_article" />
             <End Role="Archive_work" EntitySet="Archive_work" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Authorize__Reg_I__0A888742" Association="Self.FK__Authorize__Reg_I__0A888742">
+            <End Role="Reg" EntitySet="Reg" />
+            <End Role="Authorized_user_role" EntitySet="Authorized_user_role" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Issuance__Archiv__7C3A67EB" Association="Self.FK__Issuance__Archiv__7C3A67EB">
+            <End Role="Archive_work" EntitySet="Archive_work" />
+            <End Role="Issuance" EntitySet="Issuance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Issuance__Reg_ID__7D2E8C24" Association="Self.FK__Issuance__Reg_ID__7D2E8C24">
+            <End Role="Reg" EntitySet="Reg" />
+            <End Role="Issuance" EntitySet="Issuance" />
           </AssociationSet>
           <AssociationSet Name="FK_Reg_Role" Association="Self.FK_Reg_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Reg" EntitySet="Reg" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="gr682_gnmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -97,10 +178,56 @@
           <Property Name="YearCreate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="YearFinish" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Number_of_cases" Type="Int32" Nullable="false" />
           <Property Name="Storage_article_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Storage_article" Relationship="Self.FK__Archive_w__Stora__6CF8245B" FromRole="Archive_work" ToRole="Storage_article" />
+          <NavigationProperty Name="Issuance" Relationship="Self.FK__Issuance__Archiv__7C3A67EB" FromRole="Archive_work" ToRole="Issuance" />
+        </EntityType>
+        <EntityType Name="Authorized_user_role">
+          <Key>
+            <PropertyRef Name="ID_Authorized_user_role" />
+          </Key>
+          <Property Name="ID_Authorized_user_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reg_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date_authorized_user_role" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Reg" Relationship="Self.FK__Authorize__Reg_I__0A888742" FromRole="Authorized_user_role" ToRole="Reg" />
+        </EntityType>
+        <EntityType Name="Issuance">
+          <Key>
+            <PropertyRef Name="ID_Issuance_index" />
+          </Key>
+          <Property Name="ID_Issuance_index" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Archive_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date_of_issue" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_return" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="To_whom_issued" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Reg_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Archive_work" Relationship="Self.FK__Issuance__Archiv__7C3A67EB" FromRole="Issuance" ToRole="Archive_work" />
+          <NavigationProperty Name="Reg" Relationship="Self.FK__Issuance__Reg_ID__7D2E8C24" FromRole="Issuance" ToRole="Reg" />
+        </EntityType>
+        <EntityType Name="Reg">
+          <Key>
+            <PropertyRef Name="ID_Reg" />
+          </Key>
+          <Property Name="ID_Reg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role_ID" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Authorized_user_role" Relationship="Self.FK__Authorize__Reg_I__0A888742" FromRole="Reg" ToRole="Authorized_user_role" />
+          <NavigationProperty Name="Issuance" Relationship="Self.FK__Issuance__Reg_ID__7D2E8C24" FromRole="Reg" ToRole="Issuance" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Reg_Role" FromRole="Reg" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Reg" Relationship="Self.FK_Reg_Role" FromRole="Role" ToRole="Reg" />
         </EntityType>
         <EntityType Name="Storage_article">
           <Key>
@@ -111,6 +238,16 @@
           <Property Name="Shelf_life_by_article" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Note_on_storage_article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Archive_work" Relationship="Self.FK__Archive_w__Stora__6CF8245B" FromRole="Storage_article" ToRole="Archive_work" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK__Archive_w__Stora__6CF8245B">
           <End Role="Storage_article" Type="Self.Storage_article" Multiplicity="1" />
@@ -124,44 +261,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="gr682_gnmEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Archive_work" EntityType="Self.Archive_work" />
-          <EntitySet Name="Storage_article" EntityType="Self.Storage_article" />
-          <AssociationSet Name="FK__Archive_w__Stora__6CF8245B" Association="Self.FK__Archive_w__Stora__6CF8245B">
-            <End Role="Storage_article" EntitySet="Storage_article" />
-            <End Role="Archive_work" EntitySet="Archive_work" />
-          </AssociationSet>
-          <EntitySet Name="Reg" EntityType="gr682_gnmModel.Reg" />
-          <EntitySet Name="Role" EntityType="gr682_gnmModel.Role" />
-          <AssociationSet Name="FK_Reg_Role" Association="gr682_gnmModel.FK_Reg_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Reg" EntitySet="Reg" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Reg">
-          <Key>
-            <PropertyRef Name="ID_Reg" />
-          </Key>
-          <Property Name="ID_Reg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Role_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Role" Relationship="gr682_gnmModel.FK_Reg_Role" FromRole="Reg" ToRole="Role" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="ID_Role" />
-          </Key>
-          <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Role_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Reg" Relationship="gr682_gnmModel.FK_Reg_Role" FromRole="Role" ToRole="Reg" />
-        </EntityType>
+        <Association Name="FK__Issuance__Archiv__7C3A67EB">
+          <End Role="Archive_work" Type="Self.Archive_work" Multiplicity="1" />
+          <End Role="Issuance" Type="Self.Issuance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archive_work">
+              <PropertyRef Name="ID_Archive" />
+            </Principal>
+            <Dependent Role="Issuance">
+              <PropertyRef Name="Archive_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Authorize__Reg_I__0A888742">
+          <End Role="Reg" Type="Self.Reg" Multiplicity="1" />
+          <End Role="Authorized_user_role" Type="Self.Authorized_user_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reg">
+              <PropertyRef Name="ID_Reg" />
+            </Principal>
+            <Dependent Role="Authorized_user_role">
+              <PropertyRef Name="Reg_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Issuance__Reg_ID__7D2E8C24">
+          <End Role="Reg" Type="Self.Reg" Multiplicity="1" />
+          <End Role="Issuance" Type="Self.Issuance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reg">
+              <PropertyRef Name="ID_Reg" />
+            </Principal>
+            <Dependent Role="Issuance">
+              <PropertyRef Name="Reg_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Reg_Role">
-          <End Type="gr682_gnmModel.Role" Role="Role" Multiplicity="1" />
-          <End Type="gr682_gnmModel.Reg" Role="Reg" Multiplicity="*" />
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Reg" Type="Self.Reg" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="ID_Role" />
@@ -171,6 +309,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="gr682_gnmEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Archive_work" EntityType="Self.Archive_work" />
+          <EntitySet Name="Authorized_user_role" EntityType="Self.Authorized_user_role" />
+          <EntitySet Name="Issuance" EntityType="Self.Issuance" />
+          <EntitySet Name="Reg" EntityType="Self.Reg" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Storage_article" EntityType="Self.Storage_article" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK__Archive_w__Stora__6CF8245B" Association="Self.FK__Archive_w__Stora__6CF8245B">
+            <End Role="Storage_article" EntitySet="Storage_article" />
+            <End Role="Archive_work" EntitySet="Archive_work" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Issuance__Archiv__7C3A67EB" Association="Self.FK__Issuance__Archiv__7C3A67EB">
+            <End Role="Archive_work" EntitySet="Archive_work" />
+            <End Role="Issuance" EntitySet="Issuance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Authorize__Reg_I__0A888742" Association="Self.FK__Authorize__Reg_I__0A888742">
+            <End Role="Reg" EntitySet="Reg" />
+            <End Role="Authorized_user_role" EntitySet="Authorized_user_role" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Issuance__Reg_ID__7D2E8C24" Association="Self.FK__Issuance__Reg_ID__7D2E8C24">
+            <End Role="Reg" EntitySet="Reg" />
+            <End Role="Issuance" EntitySet="Issuance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reg_Role" Association="Self.FK_Reg_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Reg" EntitySet="Reg" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -191,6 +358,48 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Authorized_user_role">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Authorized_user_role">
+              <MappingFragment StoreEntitySet="Authorized_user_role">
+                <ScalarProperty Name="ID_Authorized_user_role" ColumnName="ID_Authorized_user_role" />
+                <ScalarProperty Name="Reg_ID" ColumnName="Reg_ID" />
+                <ScalarProperty Name="Date_authorized_user_role" ColumnName="Date_authorized_user_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Issuance">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Issuance">
+              <MappingFragment StoreEntitySet="Issuance">
+                <ScalarProperty Name="ID_Issuance_index" ColumnName="ID_Issuance_index" />
+                <ScalarProperty Name="Archive_ID" ColumnName="Archive_ID" />
+                <ScalarProperty Name="Date_of_issue" ColumnName="Date_of_issue" />
+                <ScalarProperty Name="Date_return" ColumnName="Date_return" />
+                <ScalarProperty Name="To_whom_issued" ColumnName="To_whom_issued" />
+                <ScalarProperty Name="Reg_ID" ColumnName="Reg_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reg">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Reg">
+              <MappingFragment StoreEntitySet="Reg">
+                <ScalarProperty Name="ID_Reg" ColumnName="ID_Reg" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Storage_article">
             <EntityTypeMapping TypeName="gr682_gnmModel.Storage_article">
               <MappingFragment StoreEntitySet="Storage_article">
@@ -201,24 +410,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Reg">
-            <EntityTypeMapping TypeName="gr682_gnmModel.Reg">
-              <MappingFragment StoreEntitySet="Reg">
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="ID_Reg" ColumnName="ID_Reg" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Role">
-            <EntityTypeMapping TypeName="gr682_gnmModel.Role">
-              <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
-                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="gr682_gnmModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

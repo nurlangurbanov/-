@@ -21,12 +21,12 @@ namespace Архивариус
     {
         private Archive_work _currentArchive = new Archive_work();
 
-        public Compiling_a_nomenclature_of_cases(Archive_work selectedArchive)
+        public Compiling_a_nomenclature_of_cases()
         {
             InitializeComponent();
 
-            if (selectedArchive != null)
-                _currentArchive = selectedArchive;
+            //if (selectedArchive != null)
+            //    _currentArchive = selectedArchive;
 
             Storage_articleCombo.ItemsSource = Helper.GetContext().Storage_article.ToList();
         }
@@ -52,10 +52,13 @@ namespace Архивариус
                 };
                 Helper.GetContext().Archive_work.Add(aw);
                 Helper.GetContext().SaveChanges();
-                MessageBox.Show("Документ успешно добавлен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Документ успешно сохранен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                Start.SelectedDate = null;
+                Finish.SelectedDate = null;
                 Index.Text = "";
                 Title.Text = "";
                 Shelf.Text = "";
+                Note.Text = "";
                 Number.Text = "";
                 Storage_articleCombo.Text = "";
             }

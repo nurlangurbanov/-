@@ -41,56 +41,53 @@ namespace Архивариус
                     Passwordpsw.Password = "";
                     Logintxt.Focus();
                 }
-                //else if (user.ID_Status == 2)
-                //{
-                //    MessageBox.Show("Этот сотрудник уволен!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
-                //    logintxt.Text = "";
-                //    passwordpsw.Password = "";
-                //    logintxt.Focus();
-                //}
-                //else
-                //{
-                //    string userinfo = user.LastName + " " + user.FirstName.Substring(0, 1) + ". " + user.MiddleName.Substring(0, 1) + ".";
-                //    Helper.ID_user = user.ID_User;
-                //    if (user.ID_Role == 1)
-                //    {
-                //        MessageBox.Show("Вы вошли как Администратор!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                //        AdminWindow adminWindow = new AdminWindow();
-                //        adminWindow.Title = "Администратор - " + userinfo;
-                //        adminWindow.Show();
-                //        this.Close();
-                //    }
-                //    if (user.ID_Role == 2)
-                //    {
-                //        if (Helper.GetContext().WorkShift.Where(x => x.ID_User == Helper.ID_user && x.DateShift == todaysDate).FirstOrDefault() != null)
-                //        {
-                //            MessageBox.Show("Вы вошли как Официант!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                //            WaiterWindow waiterWindow = new WaiterWindow();
-                //            waiterWindow.Title = "Официант - " + userinfo;
-                //            waiterWindow.Show();
-                //            this.Close();
-                //        }
-                //        else
-                //        {
-                //            MessageBox.Show("Ваша смена сегодня не назначена!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                //        }
-                //    }
-                //    if (user.ID_Role == 3)
-                //    {
-                //        if (Helper.GetContext().WorkShift.Where(x => x.ID_User == Helper.ID_user && x.DateShift == todaysDate).FirstOrDefault() != null)
-                //        {
-                //            MessageBox.Show("Вы вошли как Повар!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                //            CookWindow cookWindow = new CookWindow();
-                //            cookWindow.Title = "Повар - " + userinfo;
-                //            cookWindow.Show();
-                //            this.Close();
-                //        }
-                //        else
-                //        {
-                //            MessageBox.Show("Ваша смена сегодня не назначена!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                //        }
-                //    }
-                //}
+                else
+                {
+                    string userinfo = user.LastName + " " + user.FirstName.Substring(0, 1) + ". " + user.MiddleName.Substring(0, 1) + ".";
+                    if (user.Role_ID == 1)
+                    {
+                        Authorized_user_role au = new Authorized_user_role
+                        {
+                            Reg_ID = user.ID_Reg,
+                        };
+                        Helper.GetContext().Authorized_user_role.Add(au);
+                        Helper.GetContext().SaveChanges();
+                        MessageBox.Show("Вы вошли как Администратор!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                        RegistrationWindow adminWindow = new RegistrationWindow();
+                        adminWindow.Title = "Администратор - " + userinfo;
+                        adminWindow.ShowDialog();
+                        this.Close();
+                    }
+                    if (user.Role_ID == 2)
+                    {
+                        Authorized_user_role au = new Authorized_user_role
+                        {
+                            Reg_ID = user.ID_Reg,
+                        };
+                        Helper.GetContext().Authorized_user_role.Add(au);
+                        Helper.GetContext().SaveChanges();
+                        MessageBox.Show("Вы вошли как Архивариус!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Creation_of_nomenclature_cases CC = new Creation_of_nomenclature_cases();
+                        CC.Title = "Архивариус - " + userinfo;
+                        CC.ShowDialog();
+                        this.Close();
+                    }
+                    //if (user.ID_Role == 3)
+                    //{
+                    //    if (Helper.GetContext().WorkShift.Where(x => x.ID_User == Helper.ID_user && x.DateShift == todaysDate).FirstOrDefault() != null)
+                    //    {
+                    //        MessageBox.Show("Вы вошли как Повар!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    //        CookWindow cookWindow = new CookWindow();
+                    //        cookWindow.Title = "Повар - " + userinfo;
+                    //        cookWindow.Show();
+                    //        this.Close();
+                    //    }
+                    //    else
+                    //    {
+                    //        MessageBox.Show("Ваша смена сегодня не назначена!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    //    }
+                    //}
+                }
             }
         }
     }

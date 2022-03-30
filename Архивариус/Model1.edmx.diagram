@@ -4,13 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9635fb91595c44cba2ed7a47c0a365c5" Name="Diagram1">
-        <EntityTypeShape EntityType="gr682_gnmModel.Archive_work" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="gr682_gnmModel.Storage_article" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+      <Diagram DiagramId="cc9b2a5a30cd481d8debe2588ab2bd0b" Name="Diagram1">
+        <EntityTypeShape EntityType="gr682_gnmModel.Archive_work" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Authorized_user_role" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Issuance" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Reg" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Role" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Storage_article" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
         <AssociationConnector Association="gr682_gnmModel.FK__Archive_w__Stora__6CF8245B" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="gr682_gnmModel.Reg" Width="1.5" PointX="7.125" PointY="1.375" />
-        <EntityTypeShape EntityType="gr682_gnmModel.Role" Width="1.5" PointX="4.875" PointY="1.625" />
-        <AssociationConnector Association="gr682_gnmModel.FK_Reg_Role" />
+        <AssociationConnector Association="gr682_gnmModel.FK__Issuance__Archiv__7C3A67EB" ManuallyRouted="false" />
+        <AssociationConnector Association="gr682_gnmModel.FK__Authorize__Reg_I__0A888742" ManuallyRouted="false" />
+        <AssociationConnector Association="gr682_gnmModel.FK__Issuance__Reg_ID__7D2E8C24" ManuallyRouted="false" />
+        <AssociationConnector Association="gr682_gnmModel.FK_Reg_Role" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

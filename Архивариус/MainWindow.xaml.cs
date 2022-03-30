@@ -44,5 +44,15 @@ namespace Архивариус
         {
             this.Close();
         }
+
+        private void Issuance_for_temporary_use_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -10,7 +10,9 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="792"/>
         <TabControl HorizontalAlignment="Left" Height="61" Margin="3,3,0,0" VerticalAlignment="Top" Width="789">
             <TabItem Header="Файл">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Выдача" HorizontalAlignment="Left" Margin="1,2,0,0" VerticalAlignment="Top" Width="116" Height="30" Click="Extradition_Click"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Правка">
                 <Grid Background="#FFE5E5E5"/>

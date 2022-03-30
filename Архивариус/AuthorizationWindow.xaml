@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-        Title="Авторизация пользователя" Height="450" Width="800">
-    <Grid>
+        Title="Авторизация пользователя" WindowStartupLocation="CenterScreen" Height="450" Width="800">
+    <Grid> 
         <StackPanel Orientation="Vertical" Margin="219,23,216,25">
             <Label FontSize="24" Content="Авторизация" Margin="0 0 0 0" HorizontalAlignment="Center"/>
             <Label FontSize="24" Content="Логин:" Margin="0 30 0 0" HorizontalAlignment="Left"/>
-            <TextBox Name="Logintxt" FontSize="24" Width="357" Margin="0 10 0 0" Height="40" HorizontalAlignment="Left"/>
+            <TextBox Name="Logintxt" FontSize="24" Width="347" Margin="0 10 0 0" Height="40" HorizontalAlignment="Left"/>
             <Label Content="Пароль:" FontSize="24" Margin="0 10 0 0" HorizontalAlignment="Left"/>
-            <PasswordBox Name="Passwordpsw" FontSize="24" Margin="0 10 0 0" Width="357" Height="40" HorizontalAlignment="Left"/>
+            <PasswordBox Name="Passwordpsw" FontSize="24" Margin="0 10 0 0" Width="347" Height="40" HorizontalAlignment="Left"/>
             <Button Content="Войти" FontSize="24" Margin="0 30 0 0" HorizontalAlignment="Center" Width="150" Height="50" Click="Authorization_Click" IsDefault="True"/>
         </StackPanel>
     </Grid>

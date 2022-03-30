@@ -38,7 +38,7 @@
         <Label Content="Поиск документов" HorizontalAlignment="Left" Margin="113,274,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
         <!--<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="369" Margin="428,0,0,0" VerticalAlignment="Top" Width="264">
         </Border>-->
-        <Button Content="Настройки системы" Margin="477,235,51,134" Click="Button_Click"/>
+        <Button Content="Настройки системы" Margin="477,235,51,134" Click="Settings_Click"/>
         <Button Content="Выход" Margin="477,305,51,64" Click="Close_Click"/>
         <Label Content="Списание документов" HorizontalAlignment="Left" Margin="113,344,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontStyle="Italic"/>
     </Grid>

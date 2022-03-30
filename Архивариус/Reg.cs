@@ -14,6 +14,13 @@ namespace Архивариус
     
     public partial class Reg
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Reg()
+        {
+            this.Authorized_user_role = new HashSet<Authorized_user_role>();
+            this.Issuance = new HashSet<Issuance>();
+        }
+    
         public int ID_Reg { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
@@ -22,6 +29,10 @@ namespace Архивариус
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Authorized_user_role> Authorized_user_role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Issuance> Issuance { get; set; }
         public virtual Role Role { get; set; }
     }
 }

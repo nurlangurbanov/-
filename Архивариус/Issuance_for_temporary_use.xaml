@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-        Title="Выдача на временное пользование" Height="450" Width="800">
+        Title="Выдача на временное пользование" WindowStartupLocation="CenterScreen" Height="540" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="dtIssuance" HorizontalAlignment="Left" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" Height="400" Margin="7,10,0,0" VerticalAlignment="Top" Width="764">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Visibility="Hidden" Binding="{Binding ID_Issuance_index}"/>
+                <DataGridTextColumn Header="Заголовок дела" Binding="{Binding Archive_work.Title}"/>
+                <DataGridTextColumn Header="Кому выдано" Binding="{Binding To_whom_issued}"/>
+                <DataGridTextColumn Header="Кем выдано" Binding="{Binding Reg.LastName}"/>
+                <DataGridTextColumn Header="Дата выдачи" Binding="{Binding Date_of_issue}"/>
+                <DataGridTextColumn Header="Дата возврата" Binding="{Binding Date_return}"/>
+                <DataGridTextColumn Header="Кол - во дел:" Binding="{Binding Archive_work.Number_of_cases}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

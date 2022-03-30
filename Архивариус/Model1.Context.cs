@@ -26,8 +26,11 @@ namespace Архивариус
         }
     
         public virtual DbSet<Archive_work> Archive_work { get; set; }
-        public virtual DbSet<Storage_article> Storage_article { get; set; }
+        public virtual DbSet<Authorized_user_role> Authorized_user_role { get; set; }
+        public virtual DbSet<Issuance> Issuance { get; set; }
         public virtual DbSet<Reg> Reg { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<Storage_article> Storage_article { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

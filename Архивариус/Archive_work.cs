@@ -14,6 +14,12 @@ namespace Архивариус
     
     public partial class Archive_work
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Archive_work()
+        {
+            this.Issuance = new HashSet<Issuance>();
+        }
+    
         public int ID_Archive { get; set; }
         public int Сase_index { get; set; }
         public System.DateTime YearCreate { get; set; }
@@ -24,5 +30,7 @@ namespace Архивариус
         public int Storage_article_ID { get; set; }
     
         public virtual Storage_article Storage_article { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Issuance> Issuance { get; set; }
     }
 }
