@@ -5,14 +5,72 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-        Title="Добавление статьи хранения" WindowStartupLocation="CenterScreen" Height="300" Width="400">
+        Title="Добавление статьи хранения" WindowStartupLocation="CenterScreen" Height="350" Width="700" Background="Transparent" WindowStyle="None" AllowsTransparency="True">
     <Grid>
-        <TextBox Name="Storage_articletxt" HorizontalAlignment="Left" Height="46" Margin="182,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
-        <TextBox Name="Shelf_life_by_articletxt" HorizontalAlignment="Left" Height="46" Margin="182,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
-        <TextBox Name="Note_on_storage_articletxt" HorizontalAlignment="Left" Height="46" Margin="182,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"/>
-        <TextBlock HorizontalAlignment="Left" Margin="70,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="94"><Run Text="Статья хранения"/><Run Text=":"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="70,86,0,0"><Run Text="Срок хранения "/><LineBreak/><Run Text="по статье"/><Run Text=":"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="44,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="133"><Run Text="Примечание к статье хранения"/><Run Text=":"/></TextBlock>
-        <Button Content="Добавить" HorizontalAlignment="Left" Margin="120,223,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Save"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Background="#ffd500" Padding="30" CornerRadius="25 0 0 25">
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="/Assets/Article.png" Width="160" Height="160" Margin="0 0 0 40"/>
+                <TextBlock TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="Black" Height="91"><Run Text="Добавление"/><LineBreak/><Run Text="статьи хранения"/></TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0" MouseDown="Border_MouseDown">
+            <Grid>
+                <Button x:Name="Closebtn"
+                        BorderThickness="0"
+                        Click="Close_Click" Margin="306,1,34,291" RenderTransformOrigin="0.211,0.8">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="43.928"/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/XXX.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <Button x:Name="Collapsebtn"
+                        BorderThickness="0"
+                        Click="Collapse_Click" Margin="334,1,6,291" RenderTransformOrigin="0.644,0.656">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="-25.056"/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/Minus.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                    <TextBlock FontSize="18" Text="Статья хранения:" Style="{StaticResource text}" Margin="8,41,205,224" Height="35"/>
+                    <TextBlock FontSize="18" Style="{StaticResource text}" Margin="8,106,205,148" Height="46"><Run Text="Срок хранения"/><LineBreak/><Run Text="по статье:"/></TextBlock>
+                    <TextBlock FontSize="18" Style="{StaticResource text}" Margin="8,179,205,75" Height="46"><Run Text="Примечание к"/><LineBreak/><Run Text="статье хранения:"/></TextBlock>
+                    <TextBox Name="Storage_articletxt" HorizontalAlignment="Left" Height="46" Margin="165,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Style="{StaticResource textbox}"/>
+                    <TextBox Name="Shelf_life_by_articletxt" HorizontalAlignment="Left" Height="46" Margin="165,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Style="{StaticResource textbox}"/>
+                    <TextBox Name="Note_on_storage_articletxt" HorizontalAlignment="Left" Height="46" Margin="165,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Style="{StaticResource textbox}"/>
+                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="100,254,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Save" Style="{StaticResource buttonMainGreen}"/>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

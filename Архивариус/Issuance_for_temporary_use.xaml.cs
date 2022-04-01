@@ -29,5 +29,45 @@ namespace Архивариус
         {
             dtIssuance.ItemsSource = Helper.GetContext().Issuance.ToList();
         }
+
+        private void Delete(object sender, RoutedEventArgs e)
+        {
+            var Issuance = dtIssuance.SelectedItems.Cast<Issuance>().ToList();
+
+            if (MessageBox.Show($"Вы точно хотите удалить следующее {Issuance.Count()} элементов ?", "Внимание",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    Helper.GetContext().Issuance.RemoveRange(Issuance);
+                    Helper.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалены!");
+                    Load();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            Load();
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Collapse_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
     }
 }

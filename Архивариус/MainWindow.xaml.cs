@@ -40,11 +40,6 @@ namespace Архивариус
 
         }
 
-        private void Close_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void Issuance_for_temporary_use_Click(object sender, RoutedEventArgs e)
         {
 
@@ -53,6 +48,16 @@ namespace Архивариус
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Write_off_of_documents_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

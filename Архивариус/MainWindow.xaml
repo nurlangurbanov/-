@@ -27,7 +27,7 @@
                 <Image x:Name="Menfgjn" Source="Men.png" Margin="0,0,5,0" Width="48" Height="48" RenderTransformOrigin="0.5,0.5"/>
             </StackPanel>
         </Button>
-        <Button x:Name="ffn" HorizontalAlignment="Left" Margin="46,335,0,0" VerticalAlignment="Top" Width="51" Background="White" Click="Men_Click" Height="50">
+        <Button x:Name="Write_off_of_documents" HorizontalAlignment="Left" Margin="46,335,0,0" VerticalAlignment="Top" Width="51" Background="White" Click="Write_off_of_documents_Click" Height="50">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="Mn" Source="Men.png" Margin="0,0,5,0" Width="48" Height="48" RenderTransformOrigin="0.5,0.5"/>
             </StackPanel>

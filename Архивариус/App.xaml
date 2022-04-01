@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Архивариус"
-             StartupUri="Issuance_for_temporary_use.xaml">
+             StartupUri="Compiling_a_nomenclature_of_cases.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="Style.xaml"/>
     </Application.Resources>
 </Application>

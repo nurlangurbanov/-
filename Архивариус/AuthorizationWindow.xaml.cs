@@ -68,9 +68,10 @@ namespace Архивариус
                         Helper.GetContext().SaveChanges();
                         MessageBox.Show("Вы вошли как Архивариус!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                         Creation_of_nomenclature_cases CC = new Creation_of_nomenclature_cases();
-                        CC.Title = "Архивариус - " + userinfo;
-                        CC.ShowDialog();
+                        //CC.Title = "Архивариус - " + userinfo;
                         this.Close();
+                        CC.ShowDialog();
+
                     }
                     //if (user.ID_Role == 3)
                     //{
@@ -89,6 +90,24 @@ namespace Архивариус
                     //}
                 }
             }
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Collapse_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }

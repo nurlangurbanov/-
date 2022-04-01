@@ -5,18 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-        Title="Выдача на временное пользование" WindowStartupLocation="CenterScreen" Height="540" Width="800">
+        Title="Выдача на временное пользование" WindowStartupLocation="CenterScreen" Height="550" Width="1000" Background="Transparent" WindowStyle="None" AllowsTransparency="True">
     <Grid>
-        <DataGrid x:Name="dtIssuance" HorizontalAlignment="Left" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" Height="400" Margin="7,10,0,0" VerticalAlignment="Top" Width="764">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Visibility="Hidden" Binding="{Binding ID_Issuance_index}"/>
-                <DataGridTextColumn Header="Заголовок дела" Binding="{Binding Archive_work.Title}"/>
-                <DataGridTextColumn Header="Кому выдано" Binding="{Binding To_whom_issued}"/>
-                <DataGridTextColumn Header="Кем выдано" Binding="{Binding Reg.LastName}"/>
-                <DataGridTextColumn Header="Дата выдачи" Binding="{Binding Date_of_issue}"/>
-                <DataGridTextColumn Header="Дата возврата" Binding="{Binding Date_return}"/>
-                <DataGridTextColumn Header="Кол - во дел:" Binding="{Binding Archive_work.Number_of_cases}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Background="#ffd500" Padding="30" CornerRadius="25 0 0 25"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Margin="40,355,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Delete" Style="{StaticResource buttonMain}"/>
+
+        <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0" MouseDown="Border_MouseDown">
+            <Grid>
+                <Button x:Name="Closebtn"
+                        BorderThickness="0"
+                        Click="Close_Click" Margin="738,0,2,493">
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/XXX.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <Button x:Name="Collapsebtn"
+                        BorderThickness="0"
+                        Click="Collapse_Click" Margin="709,0,30,493">
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/Minus.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <DataGrid x:Name="dtIssuance" HorizontalAlignment="Left" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" Height="476" Margin="-12,24,-6,0" VerticalAlignment="Top" Width="778">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Visibility="Hidden" Binding="{Binding ID_Issuance_index}"/>
+                        <DataGridTextColumn Header="Заголовок дела" Binding="{Binding Archive_work.Title}"/>
+                        <DataGridTextColumn Header="Кому выдано" Binding="{Binding To_whom_issued}"/>
+                        <DataGridTextColumn Header="Кем выдано" Binding="{Binding Reg.LastName}"/>
+                        <DataGridTextColumn Header="Дата выдачи" Binding="{Binding Date_of_issue}"/>
+                        <DataGridTextColumn Header="Дата возврата" Binding="{Binding Date_return}"/>
+                        <DataGridTextColumn Header="Кол - во дел:" Binding="{Binding Archive_work.Number_of_cases}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+        </Border>
+
     </Grid>
 </Window>

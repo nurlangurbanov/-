@@ -33,7 +33,7 @@ namespace Архивариус
 
         private void Save(object sender, RoutedEventArgs e)
         {
-            if (Index.Text == "" || Title.Text == "" || Note.Text == "" || Shelf.Text == "" || Number.Text == "" || Start == null || Finish == null || Storage_articleCombo == null)
+            if (Index.Text == "" || Title.Text == "" || Note.Text == "" || Number.Text == "" || Start == null || Finish == null || Storage_articleCombo == null)
             {
                 MessageBox.Show("Пустые значения!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -57,7 +57,6 @@ namespace Архивариус
                 Finish.SelectedDate = null;
                 Index.Text = "";
                 Title.Text = "";
-                Shelf.Text = "";
                 Note.Text = "";
                 Number.Text = "";
                 Storage_articleCombo.Text = "";
@@ -69,6 +68,24 @@ namespace Архивариус
             Creation_article ca = new Creation_article();
             ca.ShowDialog();
             this.Show();
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Collapse_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }

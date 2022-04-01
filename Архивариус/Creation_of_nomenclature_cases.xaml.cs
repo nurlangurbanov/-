@@ -45,6 +45,7 @@ namespace Архивариус
         {
             Compiling_a_nomenclature_of_cases cc = new Compiling_a_nomenclature_of_cases();
             Archive_work worker = (Archive_work)dtArchive.SelectedItem;
+            cc.Index.Text = Convert.ToString(worker.Сase_index);
             cc.Start.SelectedDate = worker.YearCreate;
             cc.Finish.SelectedDate = worker.YearFinish;
             cc.Title.Text = worker.Title;
@@ -52,14 +53,10 @@ namespace Архивариус
             cc.Number.Text = Convert.ToString(worker.Number_of_cases);
             cc.Storage_articleCombo.SelectedItem = worker.Storage_article;
             cc.ShowDialog();
-            //if (worker.ID_Archive != 0)
-            //{
-            //    worker.ID_Archive = 0;
-            //}
             Helper.GetContext().SaveChanges();
             Load();
         }
-
+         
         private void Delete(object sender, RoutedEventArgs e)
         {
             var Archive = dtArchive.SelectedItems.Cast<Archive_work>().ToList();
@@ -74,12 +71,11 @@ namespace Архивариус
                     MessageBox.Show("Данные удалены!");
                     Load();
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Документ выдан на временное пользование!");
                 }
             }
-            Load();
         }
 
         private void Print(object sender, RoutedEventArgs e)
@@ -142,6 +138,24 @@ namespace Архивариус
             Aac.ShowDialog();
             Helper.GetContext().SaveChanges();
             Load();
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Collapse_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }

@@ -1,49 +1,64 @@
 ﻿<Window x:Class="Архивариус.Creation_of_nomenclature_cases"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-         Title="Составление номенклатуры дел" WindowStartupLocation="CenterScreen" Height="650" Width="800">
+         Title="Составление номенклатуры дел" WindowStartupLocation="CenterScreen" FontWeight="SemiBold" Height="550" Width="1000" Background="Transparent" WindowStyle="None" AllowsTransparency="True">
     <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="792"/>
-        <TabControl HorizontalAlignment="Left" Height="61" Margin="3,3,0,0" VerticalAlignment="Top" Width="789">
-            <TabItem Header="Файл">
-                <Grid Background="#FFE5E5E5">
-                    <Button Content="Выдача" HorizontalAlignment="Left" Margin="1,2,0,0" VerticalAlignment="Top" Width="116" Height="30" Click="Extradition_Click"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Правка">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="Управление">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="Экспорт">
-                <Grid Background="#FFE5E5E5">
-                    <Button Content="Excel" HorizontalAlignment="Left" Margin="1,2,0,0" VerticalAlignment="Top" Width="116" Height="30" Click="Excel_export"/>
-                    <Button Content="Word" HorizontalAlignment="Left" Margin="133,2,0,0" VerticalAlignment="Top" Width="116" Height="30" Click="Word_export"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Справка">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-        </TabControl>
-        <DataGrid x:Name="dtArchive" HorizontalAlignment="Left" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" Height="488" Margin="5,69,0,0" VerticalAlignment="Top" Width="777">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Visibility="Hidden" Binding="{Binding ID_Archive}"/>
-                <DataGridTextColumn Header="Индекс дела" Binding="{Binding Сase_index}"/>
-                <DataGridTextColumn Header="Заголовок дела" Binding="{Binding Title}"/>
-                <DataGridTextColumn Header="Статья хранения" Binding="{Binding Storage_article.Storage_article1}"/>
-                <DataGridTextColumn Header="Срок хранения" Binding="{Binding Storage_article.Shelf_life_by_article}"/>
-                <DataGridTextColumn Header="Кол - во дел:" Binding="{Binding Number_of_cases}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Content="Добавить дело" HorizontalAlignment="Left" Margin="625,573,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Insert"/>
-        <Button Content="Изменить" HorizontalAlignment="Left" Margin="454,573,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Update"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Margin="278,573,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Delete"/>
-        <Button Content="Печать" HorizontalAlignment="Left" Margin="5,573,0,0" VerticalAlignment="Top" Width="157" Height="36" Click="Print"/>
-        <TextBox Name="ID" HorizontalAlignment="Left" Height="23" Margin="120,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Background="#ffd500" Padding="30" CornerRadius="25 0 0 25"/>
+        <Button Content="Excel" HorizontalAlignment="Left" Margin="40,407,0,0" VerticalAlignment="Top" Width="129" Height="33" Click="Excel_export" Style="{StaticResource buttonMain}"/>
+        <Button Content="Word" HorizontalAlignment="Left" Margin="40,475,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Word_export" Style="{StaticResource buttonMain}"/>
+        <Button Content="Выдача" HorizontalAlignment="Left" Margin="40,260,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Extradition_Click" Style="{StaticResource buttonMain}"/>
+        <Button Content="Добавить дело" HorizontalAlignment="Left" Margin="40,52,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Insert" Style="{StaticResource buttonMain}"/>
+        <Button Content="Изменить" HorizontalAlignment="Left" Margin="40,120,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Update" Style="{StaticResource buttonMain}"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Margin="40,190,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Delete" Style="{StaticResource buttonMain}"/>
+        <Button Content="Печать" HorizontalAlignment="Left" Margin="40,333,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Print" Style="{StaticResource buttonMain}"/>
+
+        <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0" MouseDown="Border_MouseDown">
+            <Grid>
+                <Button x:Name="Closebtn"
+                        BorderThickness="0"
+                        Click="Close_Click" Margin="738,0,2,493">
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/XXX.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <Button x:Name="Collapsebtn"
+                        BorderThickness="0"
+                        Click="Collapse_Click" Margin="709,0,30,493">
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/Minus.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <DataGrid x:Name="dtArchive" FontFamily="Time New Roman" FontSize="17" HorizontalAlignment="Left" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" Height="476" Margin="-12,24,-6,0" VerticalAlignment="Top" Width="778">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Visibility="Hidden" Binding="{Binding ID_Archive}"/>
+                        <DataGridTextColumn Header="Индекс дела" Binding="{Binding Сase_index}"/>
+                        <DataGridTextColumn Header="Заголовок дела" Binding="{Binding Title}"/>
+                        <DataGridTextColumn Header="Статья хранения" Binding="{Binding Storage_article.Storage_article1}"/>
+                        <DataGridTextColumn Header="Срок хранения" Binding="{Binding Storage_article.Shelf_life_by_article}"/>
+                        <DataGridTextColumn Header="Кол - во дел:" Binding="{Binding Number_of_cases}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

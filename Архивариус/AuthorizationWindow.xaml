@@ -3,17 +3,76 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Архивариус"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="Авторизация пользователя" WindowStartupLocation="CenterScreen" Height="450" Width="800">
-    <Grid> 
-        <StackPanel Orientation="Vertical" Margin="219,23,216,25">
-            <Label FontSize="24" Content="Авторизация" Margin="0 0 0 0" HorizontalAlignment="Center"/>
-            <Label FontSize="24" Content="Логин:" Margin="0 30 0 0" HorizontalAlignment="Left"/>
-            <TextBox Name="Logintxt" FontSize="24" Width="347" Margin="0 10 0 0" Height="40" HorizontalAlignment="Left"/>
-            <Label Content="Пароль:" FontSize="24" Margin="0 10 0 0" HorizontalAlignment="Left"/>
-            <PasswordBox Name="Passwordpsw" FontSize="24" Margin="0 10 0 0" Width="347" Height="40" HorizontalAlignment="Left"/>
-            <Button Content="Войти" FontSize="24" Margin="0 30 0 0" HorizontalAlignment="Center" Width="150" Height="50" Click="Authorization_Click" IsDefault="True"/>
-        </StackPanel>
+        Title="Авторизация пользователя" WindowStartupLocation="CenterScreen" Height="450" Width="750" Background="Transparent" WindowStyle="None" AllowsTransparency="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Background="#ffd500" Padding="30" CornerRadius="25 0 0 25">
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="/Assets/Auth.png" Width="160" Height="160" Margin="0 0 0 40"/>
+                <TextBlock Text="Авторизация" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="Black">
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0" MouseDown="Border_MouseDown">
+            <Grid>
+                <Button x:Name="Closebtn"
+                        BorderThickness="0"
+                        Click="Close_Click" Margin="388,0,2,392">
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/XXX.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <Button x:Name="Collapsebtn"
+                        BorderThickness="0"
+                        Click="Collapse_Click" Margin="363,0,27,392">
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/Minus.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24.5"/>
+                        <RowDefinition Height="18.5"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" FontSize="32" Text="Логин" Style="{StaticResource text}" Margin="-74,-10,74,10" Grid.RowSpan="2"/>
+                    <TextBlock Grid.Row="2" FontSize="32" Text="Пароль" Style="{StaticResource text}" Margin="-92,27,92,-10"/>
+
+                    <TextBox Name="Logintxt" Grid.Row="0" Margin="52,-10,-89,-10" Grid.ColumnSpan="2" Style="{StaticResource textbox}"/>
+                    <PasswordBox Name="Passwordpsw" Grid.Row="2" Margin="52,27,-89,-10" Grid.ColumnSpan="2" Style="{StaticResource passwordbox}"/>
+
+                    <Grid Grid.Column="1" Grid.Row="7" Margin="0 40 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Войти" Margin="68,113,-90,-125" Grid.ColumnSpan="2" Style="{StaticResource buttonMainGreen}" Click="Authorization_Click"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
