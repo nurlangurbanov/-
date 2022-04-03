@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище gr682_gnmModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Archive_of_electronic_documents">
+          <Key>
+            <PropertyRef Name="ID_Archive_of_electronic_documents" />
+          </Key>
+          <Property Name="ID_Archive_of_electronic_documents" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Сase_index" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Way" Type="text" Nullable="false" />
+          <Property Name="Storage_article_ID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Archive_work">
           <Key>
             <PropertyRef Name="ID_Archive" />
@@ -17,6 +27,7 @@
           <Property Name="Note" Type="nvarchar" MaxLength="50" />
           <Property Name="Number_of_cases" Type="int" Nullable="false" />
           <Property Name="Storage_article_ID" Type="int" Nullable="false" />
+          <Property Name="Signature_documents_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Authorized_user_role">
           <Key>
@@ -56,6 +67,13 @@
           <Property Name="ID_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Role_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Signature_documents">
+          <Key>
+            <PropertyRef Name="ID_Signature_documents" />
+          </Key>
+          <Property Name="ID_Signature_documents" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Write_off_indicator" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Storage_article">
           <Key>
             <PropertyRef Name="ID_Storage_article" />
@@ -75,6 +93,30 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <Association Name="FK__Archive_o__Stora__0E591826">
+          <End Role="Storage_article" Type="Self.Storage_article" Multiplicity="1" />
+          <End Role="Archive_of_electronic_documents" Type="Self.Archive_of_electronic_documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage_article">
+              <PropertyRef Name="ID_Storage_article" />
+            </Principal>
+            <Dependent Role="Archive_of_electronic_documents">
+              <PropertyRef Name="Storage_article_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Archive_w__Signa__113584D1">
+          <End Role="Signature_documents" Type="Self.Signature_documents" Multiplicity="1" />
+          <End Role="Archive_work" Type="Self.Archive_work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Signature_documents">
+              <PropertyRef Name="ID_Signature_documents" />
+            </Principal>
+            <Dependent Role="Archive_work">
+              <PropertyRef Name="Signature_documents_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Archive_w__Stora__6CF8245B">
           <End Role="Storage_article" Type="Self.Storage_article" Multiplicity="1" />
           <End Role="Archive_work" Type="Self.Archive_work" Multiplicity="*" />
@@ -136,13 +178,23 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище gr682_gnmModelContainer">
+          <EntitySet Name="Archive_of_electronic_documents" EntityType="Self.Archive_of_electronic_documents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Archive_work" EntityType="Self.Archive_work" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Authorized_user_role" EntityType="Self.Authorized_user_role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Issuance" EntityType="Self.Issuance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reg" EntityType="Self.Reg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Signature_documents" EntityType="Self.Signature_documents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storage_article" EntityType="Self.Storage_article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Archive_o__Stora__0E591826" Association="Self.FK__Archive_o__Stora__0E591826">
+            <End Role="Storage_article" EntitySet="Storage_article" />
+            <End Role="Archive_of_electronic_documents" EntitySet="Archive_of_electronic_documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Archive_w__Signa__113584D1" Association="Self.FK__Archive_w__Signa__113584D1">
+            <End Role="Signature_documents" EntitySet="Signature_documents" />
+            <End Role="Archive_work" EntitySet="Archive_work" />
+          </AssociationSet>
           <AssociationSet Name="FK__Archive_w__Stora__6CF8245B" Association="Self.FK__Archive_w__Stora__6CF8245B">
             <End Role="Storage_article" EntitySet="Storage_article" />
             <End Role="Archive_work" EntitySet="Archive_work" />
@@ -169,6 +221,17 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="gr682_gnmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Archive_of_electronic_documents">
+          <Key>
+            <PropertyRef Name="ID_Archive_of_electronic_documents" />
+          </Key>
+          <Property Name="ID_Archive_of_electronic_documents" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Сase_index" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Way" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Storage_article_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Storage_article" Relationship="Self.FK__Archive_o__Stora__0E591826" FromRole="Archive_of_electronic_documents" ToRole="Storage_article" />
+        </EntityType>
         <EntityType Name="Archive_work">
           <Key>
             <PropertyRef Name="ID_Archive" />
@@ -181,6 +244,8 @@
           <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Number_of_cases" Type="Int32" Nullable="false" />
           <Property Name="Storage_article_ID" Type="Int32" Nullable="false" />
+          <Property Name="Signature_documents_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Signature_documents" Relationship="Self.FK__Archive_w__Signa__113584D1" FromRole="Archive_work" ToRole="Signature_documents" />
           <NavigationProperty Name="Storage_article" Relationship="Self.FK__Archive_w__Stora__6CF8245B" FromRole="Archive_work" ToRole="Storage_article" />
           <NavigationProperty Name="Issuance" Relationship="Self.FK__Issuance__Archiv__7C3A67EB" FromRole="Archive_work" ToRole="Issuance" />
         </EntityType>
@@ -229,6 +294,14 @@
           <Property Name="Role_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Reg" Relationship="Self.FK_Reg_Role" FromRole="Role" ToRole="Reg" />
         </EntityType>
+        <EntityType Name="Signature_documents">
+          <Key>
+            <PropertyRef Name="ID_Signature_documents" />
+          </Key>
+          <Property Name="ID_Signature_documents" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Write_off_indicator" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Archive_work" Relationship="Self.FK__Archive_w__Signa__113584D1" FromRole="Signature_documents" ToRole="Archive_work" />
+        </EntityType>
         <EntityType Name="Storage_article">
           <Key>
             <PropertyRef Name="ID_Storage_article" />
@@ -237,6 +310,7 @@
           <Property Name="Storage_article1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Shelf_life_by_article" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Note_on_storage_article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Archive_of_electronic_documents" Relationship="Self.FK__Archive_o__Stora__0E591826" FromRole="Storage_article" ToRole="Archive_of_electronic_documents" />
           <NavigationProperty Name="Archive_work" Relationship="Self.FK__Archive_w__Stora__6CF8245B" FromRole="Storage_article" ToRole="Archive_work" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -249,6 +323,30 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK__Archive_o__Stora__0E591826">
+          <End Role="Storage_article" Type="Self.Storage_article" Multiplicity="1" />
+          <End Role="Archive_of_electronic_documents" Type="Self.Archive_of_electronic_documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage_article">
+              <PropertyRef Name="ID_Storage_article" />
+            </Principal>
+            <Dependent Role="Archive_of_electronic_documents">
+              <PropertyRef Name="Storage_article_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Archive_w__Signa__113584D1">
+          <End Role="Signature_documents" Type="Self.Signature_documents" Multiplicity="1" />
+          <End Role="Archive_work" Type="Self.Archive_work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Signature_documents">
+              <PropertyRef Name="ID_Signature_documents" />
+            </Principal>
+            <Dependent Role="Archive_work">
+              <PropertyRef Name="Signature_documents_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Archive_w__Stora__6CF8245B">
           <End Role="Storage_article" Type="Self.Storage_article" Multiplicity="1" />
           <End Role="Archive_work" Type="Self.Archive_work" Multiplicity="*" />
@@ -310,13 +408,23 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="gr682_gnmEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Archive_of_electronic_documents" EntityType="Self.Archive_of_electronic_documents" />
           <EntitySet Name="Archive_work" EntityType="Self.Archive_work" />
           <EntitySet Name="Authorized_user_role" EntityType="Self.Authorized_user_role" />
           <EntitySet Name="Issuance" EntityType="Self.Issuance" />
           <EntitySet Name="Reg" EntityType="Self.Reg" />
           <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Signature_documents" EntityType="Self.Signature_documents" />
           <EntitySet Name="Storage_article" EntityType="Self.Storage_article" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK__Archive_o__Stora__0E591826" Association="Self.FK__Archive_o__Stora__0E591826">
+            <End Role="Storage_article" EntitySet="Storage_article" />
+            <End Role="Archive_of_electronic_documents" EntitySet="Archive_of_electronic_documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Archive_w__Signa__113584D1" Association="Self.FK__Archive_w__Signa__113584D1">
+            <End Role="Signature_documents" EntitySet="Signature_documents" />
+            <End Role="Archive_work" EntitySet="Archive_work" />
+          </AssociationSet>
           <AssociationSet Name="FK__Archive_w__Stora__6CF8245B" Association="Self.FK__Archive_w__Stora__6CF8245B">
             <End Role="Storage_article" EntitySet="Storage_article" />
             <End Role="Archive_work" EntitySet="Archive_work" />
@@ -344,6 +452,17 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище gr682_gnmModelContainer" CdmEntityContainer="gr682_gnmEntities">
+          <EntitySetMapping Name="Archive_of_electronic_documents">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Archive_of_electronic_documents">
+              <MappingFragment StoreEntitySet="Archive_of_electronic_documents">
+                <ScalarProperty Name="ID_Archive_of_electronic_documents" ColumnName="ID_Archive_of_electronic_documents" />
+                <ScalarProperty Name="Сase_index" ColumnName="Сase_index" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Way" ColumnName="Way" />
+                <ScalarProperty Name="Storage_article_ID" ColumnName="Storage_article_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Archive_work">
             <EntityTypeMapping TypeName="gr682_gnmModel.Archive_work">
               <MappingFragment StoreEntitySet="Archive_work">
@@ -355,6 +474,7 @@
                 <ScalarProperty Name="Note" ColumnName="Note" />
                 <ScalarProperty Name="Number_of_cases" ColumnName="Number_of_cases" />
                 <ScalarProperty Name="Storage_article_ID" ColumnName="Storage_article_ID" />
+                <ScalarProperty Name="Signature_documents_ID" ColumnName="Signature_documents_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -397,6 +517,14 @@
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
                 <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Signature_documents">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Signature_documents">
+              <MappingFragment StoreEntitySet="Signature_documents">
+                <ScalarProperty Name="ID_Signature_documents" ColumnName="ID_Signature_documents" />
+                <ScalarProperty Name="Write_off_indicator" ColumnName="Write_off_indicator" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -24,10 +24,6 @@ namespace Архивариус
         public Compiling_a_nomenclature_of_cases()
         {
             InitializeComponent();
-
-            //if (selectedArchive != null)
-            //    _currentArchive = selectedArchive;
-
             Storage_articleCombo.ItemsSource = Helper.GetContext().Storage_article.ToList();
         }
 
@@ -49,6 +45,7 @@ namespace Архивариус
                     Note = Note.Text,
                     Number_of_cases = Convert.ToInt32(Number.Text),
                     Storage_article_ID = ID_Storage_article.ID_Storage_article,
+                    Signature_documents_ID = 1
                 };
                 Helper.GetContext().Archive_work.Add(aw);
                 Helper.GetContext().SaveChanges();

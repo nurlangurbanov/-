@@ -30,7 +30,7 @@ namespace Архивариус
 
         public void Load()
         {
-            dtArchive.ItemsSource = Helper.GetContext().Archive_work.ToList();
+            dtArchive.ItemsSource = Helper.GetContext().Archive_work.Where(x => x.Signature_documents_ID == 1).ToList();
         }
 
         private void Insert(object sender, RoutedEventArgs e)
@@ -84,7 +84,6 @@ namespace Архивариус
             if ((bool)Printdlg.ShowDialog().GetValueOrDefault())
             {
                 Size pageSize = new Size(Printdlg.PrintableAreaWidth, Printdlg.PrintableAreaHeight);
-                // sizing of the element.
                 dtArchive.Measure(pageSize);
                 dtArchive.Arrange(new Rect(5, 5, pageSize.Width, pageSize.Height));
                 Printdlg.PrintVisual(dtArchive, Title);
@@ -136,6 +135,14 @@ namespace Архивариус
             Aac.Title.Text = worker.Title;
             Aac.Number.Text = Convert.ToString(worker.Number_of_cases);
             Aac.ShowDialog();
+            Helper.GetContext().SaveChanges();
+            Load();
+        }
+
+        private void Signature(object sender, RoutedEventArgs e)
+        {
+            Archive_work worker = (Archive_work)dtArchive.SelectedItem;
+            worker.Signature_documents_ID = 2;
             Helper.GetContext().SaveChanges();
             Load();
         }

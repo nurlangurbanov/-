@@ -54,9 +54,9 @@ namespace Архивариус
                         Helper.GetContext().SaveChanges();
                         MessageBox.Show("Вы вошли как Администратор!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                         RegistrationWindow adminWindow = new RegistrationWindow();
-                        adminWindow.Title = "Администратор - " + userinfo;
-                        adminWindow.ShowDialog();
+                        //adminWindow.Title = "Администратор - " + userinfo;
                         this.Close();
+                        adminWindow.ShowDialog();
                     }
                     if (user.Role_ID == 2)
                     {
@@ -73,21 +73,6 @@ namespace Архивариус
                         CC.ShowDialog();
 
                     }
-                    //if (user.ID_Role == 3)
-                    //{
-                    //    if (Helper.GetContext().WorkShift.Where(x => x.ID_User == Helper.ID_user && x.DateShift == todaysDate).FirstOrDefault() != null)
-                    //    {
-                    //        MessageBox.Show("Вы вошли как Повар!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                    //        CookWindow cookWindow = new CookWindow();
-                    //        cookWindow.Title = "Повар - " + userinfo;
-                    //        cookWindow.Show();
-                    //        this.Close();
-                    //    }
-                    //    else
-                    //    {
-                    //        MessageBox.Show("Ваша смена сегодня не назначена!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                    //    }
-                    //}
                 }
             }
         }

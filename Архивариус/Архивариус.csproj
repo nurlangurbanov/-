@@ -72,11 +72,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Adding_an_electronic_archival_document.xaml.cs">
-      <DependentUpon>Adding_an_electronic_archival_document.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Adding_a_checkout.xaml.cs">
       <DependentUpon>Adding_a_checkout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Archive_of_electronic_documents.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Archive_work.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -89,6 +89,9 @@
     </Compile>
     <Compile Include="Creation_article.xaml.cs">
       <DependentUpon>Creation_article.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Electronic_document_work.xaml.cs">
+      <DependentUpon>Electronic_document_work.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Issuance.cs">
@@ -124,6 +127,9 @@
     <Compile Include="Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Signature_documents.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Storage_article.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -133,10 +139,6 @@
     <Compile Include="Write_off_of_documents.xaml.cs">
       <DependentUpon>Write_off_of_documents.xaml</DependentUpon>
     </Compile>
-    <Page Include="Adding_an_electronic_archival_document.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Adding_a_checkout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -154,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Creation_of_nomenclature_cases.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Electronic_document_work.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,12 +220,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\Roboto-Light.ttf" />
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="App.Config" />
-    <Resource Include="Fonts\Roboto-Light.ttf" />
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -288,6 +294,9 @@
     <Resource Include="Assets\XXX.png" />
     <Resource Include="Assets\AddDoc.png" />
     <Resource Include="Assets\Article.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Signature.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

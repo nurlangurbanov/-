@@ -51,12 +51,5 @@ namespace Архивариус
                 RoleCombo.Text = "";
             }
         }
-
-        private void Authorization_Click(object sender, RoutedEventArgs e)
-        {
-            AuthorizationWindow authorizationWindow = new AuthorizationWindow();
-            authorizationWindow.ShowDialog();
-            this.Close();
-        }
     }
 }

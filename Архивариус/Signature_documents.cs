@@ -12,27 +12,18 @@ namespace Архивариус
     using System;
     using System.Collections.Generic;
     
-    public partial class Archive_work
+    public partial class Signature_documents
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Archive_work()
+        public Signature_documents()
         {
-            this.Issuance = new HashSet<Issuance>();
+            this.Archive_work = new HashSet<Archive_work>();
         }
     
-        public int ID_Archive { get; set; }
-        public int Сase_index { get; set; }
-        public System.DateTime YearCreate { get; set; }
-        public System.DateTime YearFinish { get; set; }
-        public string Title { get; set; }
-        public string Note { get; set; }
-        public int Number_of_cases { get; set; }
-        public int Storage_article_ID { get; set; }
-        public int Signature_documents_ID { get; set; }
+        public int ID_Signature_documents { get; set; }
+        public int Write_off_indicator { get; set; }
     
-        public virtual Signature_documents Signature_documents { get; set; }
-        public virtual Storage_article Storage_article { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Issuance> Issuance { get; set; }
+        public virtual ICollection<Archive_work> Archive_work { get; set; }
     }
 }

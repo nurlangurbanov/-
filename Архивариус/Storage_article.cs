@@ -17,6 +17,7 @@ namespace Архивариус
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Storage_article()
         {
+            this.Archive_of_electronic_documents = new HashSet<Archive_of_electronic_documents>();
             this.Archive_work = new HashSet<Archive_work>();
         }
     
@@ -25,6 +26,8 @@ namespace Архивариус
         public string Shelf_life_by_article { get; set; }
         public string Note_on_storage_article { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Archive_of_electronic_documents> Archive_of_electronic_documents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Archive_work> Archive_work { get; set; }
     }

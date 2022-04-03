@@ -5,8 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-        Title="Списание документов" Height="450" Width="800">
+        Title="Списание документов" WindowStartupLocation="CenterScreen" Height="550" Width="1100" Background="Transparent" WindowStyle="None" AllowsTransparency="True">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Background="#ffd500" Padding="30" CornerRadius="25 0 0 25">
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="/Assets/Signature.png" Width="160" Height="160" Margin="0 0 0 40"/>
+                <TextBlock TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="Black" Height="82"><Run Text="Списанные"/><LineBreak/><Run Text="документы"/></TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0" MouseDown="Border_MouseDown">
+            <Grid>
+                <Button x:Name="Closebtn"
+                        BorderThickness="0"
+                        Click="Close_Click" Margin="785,0,2,491">
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/XXX.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <Button x:Name="Collapsebtn"
+                        BorderThickness="0"
+                        Click="Collapse_Click" Margin="760,0,30,491">
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/Minus.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <DataGrid x:Name="dtArchive" FontFamily="Time New Roman" FontSize="17" HorizontalAlignment="Left" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" Height="476" Margin="-12,24,0,0" VerticalAlignment="Top" Width="820">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Visibility="Hidden" Binding="{Binding ID_Archive}"/>
+                        <DataGridTextColumn Header="Индекс дела" Binding="{Binding Сase_index}"/>
+                        <DataGridTextColumn Header="Заголовок дела" Binding="{Binding Title}"/>
+                        <DataGridTextColumn Header="Статья хранения" Binding="{Binding Storage_article.Storage_article1}"/>
+                        <DataGridTextColumn Header="Срок хранения" Binding="{Binding Storage_article.Shelf_life_by_article}"/>
+                        <DataGridTextColumn Header="Кол - во дел:" Binding="{Binding Number_of_cases}"/>
+                        <DataGridTemplateColumn Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Width="160" Height="30" Content="Вернуть в архив" Click="Return" Style="{StaticResource buttonMainGreen}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

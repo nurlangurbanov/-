@@ -56,6 +56,13 @@
                         <DataGridTextColumn Header="Статья хранения" Binding="{Binding Storage_article.Storage_article1}"/>
                         <DataGridTextColumn Header="Срок хранения" Binding="{Binding Storage_article.Shelf_life_by_article}"/>
                         <DataGridTextColumn Header="Кол - во дел:" Binding="{Binding Number_of_cases}"/>
+                        <DataGridTemplateColumn Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Списать" Click="Signature" Style="{StaticResource buttonMainGreen}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
