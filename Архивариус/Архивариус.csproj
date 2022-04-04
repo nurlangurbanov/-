@@ -297,6 +297,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Signature.png" />
+    <Resource Include="Assets\Using.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-        Title="Добавление документов на временное пользование" WindowStartupLocation="CenterScreen" Height="361.572" Width="800">
+        Title="Выдача документов на временное пользование" WindowStartupLocation="CenterScreen" Height="361.572" Width="800">
     <Grid>
         <TextBox Name="Index_iss" HorizontalAlignment="Left" Height="23" Margin="120,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="Title" HorizontalAlignment="Left" Height="89" Margin="120,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>

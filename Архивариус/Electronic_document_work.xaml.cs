@@ -60,22 +60,29 @@ namespace Архивариус
             }
             else
             {
-                var ID_Storage_article = Helper.GetContext().Storage_article.FirstOrDefault(x => x.Storage_article1 == Storage_articleCombo.Text);
-                Archive_of_electronic_documents ae = new Archive_of_electronic_documents
+                try
                 {
-                    Сase_index = Index.Text,
-                    Title = Title.Text,
-                    Storage_article_ID = ID_Storage_article.ID_Storage_article,
-                    Way = Way.Text
-                };
-                Helper.GetContext().Archive_of_electronic_documents.Add(ae);
-                Helper.GetContext().SaveChanges();
-                MessageBox.Show("Документ успешно сохранен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                Index.Text = "";
-                Title.Text = "";
-                Storage_articleCombo.Text = "";
-                Way.Text = "";
-                Load();
+                    var ID_Storage_article = Helper.GetContext().Storage_article.FirstOrDefault(x => x.Storage_article1 == Storage_articleCombo.Text);
+                    Archive_of_electronic_documents ae = new Archive_of_electronic_documents
+                    {
+                        Сase_index = Index.Text,
+                        Title = Title.Text,
+                        Storage_article_ID = ID_Storage_article.ID_Storage_article,
+                        Way = Way.Text
+                    };
+                    Helper.GetContext().Archive_of_electronic_documents.Add(ae);
+                    Helper.GetContext().SaveChanges();
+                    MessageBox.Show("Документ успешно сохранен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Index.Text = "";
+                    Title.Text = "";
+                    Storage_articleCombo.Text = "";
+                    Way.Text = "";
+                    Load();
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка при добавление", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
 
         }
