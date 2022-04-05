@@ -5,22 +5,79 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-        Title="Выдача документов на временное пользование" WindowStartupLocation="CenterScreen" Height="361.572" Width="800">
+        Title="Выдача документов на временное пользование" WindowStartupLocation="CenterScreen" Height="600" Width="1080" Background="Transparent" WindowStyle="None" AllowsTransparency="True">
     <Grid>
-        <TextBox Name="Index_iss" HorizontalAlignment="Left" Height="23" Margin="120,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="Title" HorizontalAlignment="Left" Height="89" Margin="120,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
-        <TextBox Name="To_whom_issued" HorizontalAlignment="Left" Height="23" Margin="120,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="605"/>
-        <TextBlock HorizontalAlignment="Left" Margin="24,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Индекс выдачи"/><Run Text=":"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="24,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Заголовок дела"/><Run Text=":"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="35,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Кому выдано"/><Run Text=":"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="28,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox Name="Number" HorizontalAlignment="Left" Height="23" Margin="200,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Кол - во дел: (томов, частей)"/><Run Text=":"/></TextBlock>
-        <DatePicker Name="Start" HorizontalAlignment="Left" Margin="376,57,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="295,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Дата выдачи"/><Run Text=":"/></TextBlock>
-        <DatePicker Name="Finish" HorizontalAlignment="Left" Margin="621,57,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="530,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Дата возврата"/><Run Text=":"/></TextBlock>
-        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="690,287,0,0" VerticalAlignment="Top" Width="92" Height="36" Click="Save"/>
-        <TextBox x:Name="Archive_IDtxt" HorizontalAlignment="Left" Height="23" Margin="120,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Background="#ffd500" Padding="30" CornerRadius="25 0 0 25">
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="/Assets/Using.png" Width="160" Height="160" Margin="0 0 0 40"/>
+                <TextBlock TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="Black" Height="124"><Run Text="Выдача"/><LineBreak/><Run Text="архивного"/><LineBreak/><Run Text="документа"/></TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0" MouseDown="Border_MouseDown">
+            <Grid>
+                <Button x:Name="Closebtn"
+                        BorderThickness="0"
+                        Click="Close_Click" Margin="718,0,2,542" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/XXX.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <Button x:Name="Collapsebtn"
+                        BorderThickness="0"
+                        Click="Collapse_Click" Margin="693,0,0,542" HorizontalAlignment="Left" Width="20" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+
+                    <Button.Background>
+
+                        <ImageBrush ImageSource="Assets/Minus.png"/>
+
+                    </Button.Background>
+
+                </Button>
+
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0">
+                    <TextBlock FontSize="18" Text="Индекс выдачи:" Style="{StaticResource text}" Margin="10,57,514,469"/>
+                    <TextBlock FontSize="18" Text="Заголовок дела:" Style="{StaticResource text}" Margin="10,139,505,387"/>
+                    <TextBlock FontSize="18" Text="Кому выдано:" Style="{StaticResource text}" Margin="10,222,528,304"/>
+                    <TextBlock FontSize="18" Text="Количество дел (томов, частей):" Style="{StaticResource text}" Margin="10,305,390,221"/>
+                    <TextBlock FontSize="18" Text="Дата выдачи:" Style="{StaticResource text}" Margin="10,407,604,119"/>
+                    <TextBlock FontSize="18" Text="Дата возврата:" Style="{StaticResource text}" Margin="447,406,145,120" RenderTransformOrigin="0.682,1.586"/>
+                    <TextBox x:Name="Archive_IDtxt" HorizontalAlignment="Left" Height="23" Margin="120,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+                    <TextBox Name="Index_iss" HorizontalAlignment="Left" Height="44" Margin="158,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Style="{StaticResource textbox}"/>
+                    <TextBox Name="Title" HorizontalAlignment="Left" Height="89" Margin="184,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="541" Style="{StaticResource textbox}"/>
+                    <TextBox Name="To_whom_issued" HorizontalAlignment="Left" Height="44" Margin="159,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="566" Style="{StaticResource textbox}"/>
+                    <TextBox Name="Number" HorizontalAlignment="Left" Height="44" Margin="319,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="406" Style="{StaticResource textbox}"/>
+                    <DatePicker Name="Start" HorizontalAlignment="Left" Margin="159,409,0,0" VerticalAlignment="Top"/>
+                    <DatePicker Name="Finish" HorizontalAlignment="Left" Margin="618,409,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Сохранить" HorizontalAlignment="Left" Margin="625,495,0,0" VerticalAlignment="Top" Width="92" Height="36" Click="Save" Style="{StaticResource buttonMainGreen}"/>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

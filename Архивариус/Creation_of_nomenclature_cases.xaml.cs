@@ -147,6 +147,38 @@ namespace Архивариус
             Load();
         }
 
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (IndexS.Text != "")
+                {
+                    int index = Convert.ToInt32(IndexS.Text);
+                    dtArchive.ItemsSource = Helper.GetContext().Archive_work.Where(x => x.Сase_index == index).ToList();
+                }
+                if (TitleS.Text != "")
+                {
+                    dtArchive.ItemsSource = Helper.GetContext().Archive_work.Where(x => x.Title == TitleS.Text).ToList();
+                }
+                if (ArticleS.Text != "")
+                {
+                    dtArchive.ItemsSource = Helper.GetContext().Storage_article.Where(x => x.Storage_article1 == ArticleS.Text).ToList();
+                }
+                if (StartS.Text != "")
+                {
+                    dtArchive.ItemsSource = Helper.GetContext().Archive_work.Where(x => x.YearCreate == Convert.ToDateTime(StartS.SelectedDate)).ToList();
+                }
+                if (FinishS.Text != "")
+                {
+                    dtArchive.ItemsSource = Helper.GetContext().Archive_work.Where(x => x.YearFinish == Convert.ToDateTime(FinishS.SelectedDate)).ToList();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка при поиске", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

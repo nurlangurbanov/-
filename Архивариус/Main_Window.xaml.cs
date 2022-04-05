@@ -72,5 +72,10 @@ namespace Архивариус
             CNC.ShowDialog();
             this.Show();
         }
+
+        private void Creation_of_nomenclature_cases_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
     }
 }
