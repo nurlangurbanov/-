@@ -15,13 +15,13 @@
         </Grid.ColumnDefinitions>
 
         <Border Background="#ffd500" Padding="30" CornerRadius="25 0 0 25"/>
-        <Button Content="Excel" HorizontalAlignment="Left" Margin="40,407,0,0" VerticalAlignment="Top" Width="129" Height="33" Click="Excel_export" Style="{StaticResource buttonMain}"/>
-        <Button Content="Word" HorizontalAlignment="Left" Margin="40,475,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Word_export" Style="{StaticResource buttonMain}"/>
-        <Button Content="Выдача" HorizontalAlignment="Left" Margin="40,260,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Extradition_Click" Style="{StaticResource buttonMain}"/>
-        <Button Content="Добавить дело" HorizontalAlignment="Left" Margin="40,52,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Insert" Style="{StaticResource buttonMain}"/>
-        <Button Content="Изменить" HorizontalAlignment="Left" Margin="40,120,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Update" Style="{StaticResource buttonMain}"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Margin="40,190,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Delete" Style="{StaticResource buttonMain}"/>
-        <Button Content="Печать" HorizontalAlignment="Left" Margin="40,333,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Print" Style="{StaticResource buttonMain}"/>
+        <!--<Button Content="Excel" HorizontalAlignment="Left" Margin="40,407,0,0" VerticalAlignment="Top" Width="129" Height="33" Click="Excel_export" Style="{StaticResource buttonMain}"/>
+        <Button Content="Word" HorizontalAlignment="Left" Margin="40,475,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Word_export" Style="{StaticResource buttonMain}"/>-->
+        <Button Content="Выдача" HorizontalAlignment="Left" Margin="37,311,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Extradition_Click" Style="{StaticResource buttonMain}"/>
+        <Button Content="Добавить дело" HorizontalAlignment="Left" Margin="37,103,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Insert" Style="{StaticResource buttonMain}"/>
+        <Button Content="Изменить" HorizontalAlignment="Left" Margin="37,171,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Update" Style="{StaticResource buttonMain}"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Margin="37,241,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Delete" Style="{StaticResource buttonMain}"/>
+        <Button Content="Печать" HorizontalAlignment="Left" Margin="37,384,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Print" Style="{StaticResource buttonMain}"/>
 
         <Border Grid.Column="1" Padding="20" Background="#ffffff" MouseDown="Border_MouseDown">
             <Grid>

@@ -16,6 +16,7 @@
             <StackPanel VerticalAlignment="Center">
                 <Image Source="/Assets/AddDoc.png" Width="160" Height="160" Margin="0 0 0 40"/>
                 <TextBlock TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="Black" Height="124"><Run Text="Добавление"/><LineBreak/><Run Text="архивного"/><LineBreak/><Run Text="документа"/></TextBlock>
+                <CheckBox Name="ImageCheck"/>
             </StackPanel>
         </Border>
 

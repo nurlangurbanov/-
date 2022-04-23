@@ -21,7 +21,7 @@
         <TextBox Name="Title" HorizontalAlignment="Left" Height="44" Margin="10,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Style="{StaticResource textbox}"/>
         <ComboBox Name="Storage_articleCombo" DisplayMemberPath="Storage_article1" FontSize="14" Margin="10,239,10,0" VerticalAlignment="Top" Height="44"/>
         <TextBox Name="Way" HorizontalAlignment="Left" Height="44" Margin="10,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Style="{StaticResource textbox}"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Margin="40,380,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Insert_way" Style="{StaticResource buttonMainGreen}"/>
+        <Button Content="Добавить файл" HorizontalAlignment="Left" Margin="40,380,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Insert_way" Style="{StaticResource buttonMainGreen}"/>
         <Button Content="Сохранить" HorizontalAlignment="Left" Margin="40,437,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Save" Style="{StaticResource buttonMainGreen}"/>
         <Button Content="Удалить" HorizontalAlignment="Left" Margin="40,495,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Delete" Style="{StaticResource buttonMain}"/>
 

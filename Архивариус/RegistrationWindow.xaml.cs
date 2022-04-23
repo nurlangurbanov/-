@@ -91,13 +91,6 @@ namespace Архивариус
         {
             try
             {
-                //Reg reg = (Reg)dtUser.SelectedItem;
-                //Logintxt.Text = reg.Login;
-                //Passwordpsw.Password = reg.Password;
-                //LastNametxt.Text = reg.LastName;
-                //FirstNametxt.Text = reg.FirstName;
-                //MiddleNametxt.Text = reg.MiddleName;
-                //Role_Combo.SelectedItem = reg.Role;
                 var ID_Role = Helper.GetContext().Role.FirstOrDefault(x => x.Role_Name == Role_Combo.Text);
                 Reg reg = new Reg
                 {

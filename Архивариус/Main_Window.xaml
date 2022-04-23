@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="600" 
-        Width="800"
+        Height="550" 
+        Width="1000"
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
@@ -171,7 +171,7 @@
                 <Grid.Background>
 
                     <ImageBrush x:Name="img_bg"
-                                ImageSource="Assets/img_background.png"
+                                ImageSource="Assets/Archiv.png"
                                 Stretch="Fill"/>
 
                 </Grid.Background>
@@ -336,7 +336,7 @@
                                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
                         <!--// Home //-->
-                        <Button Background="#ffd500">
+                        <!--<Button Background="#ffd500">
                             <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
@@ -354,7 +354,7 @@
 
                                 </StackPanel>
 
-                                <!--// Tooltip //-->
+                                --><!--// Tooltip //--><!--
 
                                 <ListViewItem.ToolTip>
 
@@ -365,11 +365,11 @@
                                 </ListViewItem.ToolTip>
 
                             </ListViewItem>
-                        </Button>
+                        </Button>-->
 
                         <!--// Contacts //-->
 
-                        <Button Background="Black" Click="Creation_of_nomenclature_cases_Click">
+                        <Button Click="Creation_of_nomenclature_cases_Click" Style="{StaticResource buttonMainGreen}" Width="530">
                             <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
@@ -377,12 +377,12 @@
                                 <StackPanel Orientation="Horizontal"
                                         Width="530">
 
-                                    <Image Source="Assets/img_contact.png"
+                                    <!--<Image Source="Assets/AddDoc.png"
                                        Stretch="None"
-                                       Margin="5,0,0,0"/>
+                                       Margin="5,0,0,0" Height="26" Width="29"/>-->
 
-                                    <TextBlock Text="Составление номенклатуры дел"
-                                           Margin="25,0,0,0"
+                                    <TextBlock Text="Физические документы"
+                                           Margin="55,0,0,0"
                                            Style="{StaticResource font_style}"/>
 
                                 </StackPanel>
@@ -402,7 +402,7 @@
 
                         <!--// Messages //-->
 
-                        <Button Background="#ffd500">
+                        <Button Click="Electronic_document_work_Click" Style="{StaticResource buttonMainGreen}" Width="530">
                             <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
@@ -410,12 +410,12 @@
                                 <StackPanel Orientation="Horizontal"
                                         Width="530">
 
-                                    <Image Source="Assets/img_message.png"
+                                    <!--<Image Source="Assets/Minus.png"
                                        Stretch="None"
-                                       Margin="5,0,0,0"/>
+                                       Margin="5,0,0,0"/>-->
 
-                                    <TextBlock Text="Формирование и оформление дел"
-                                           Margin="25,0,0,0"
+                                    <TextBlock Text="Электронные документы"
+                                           Margin="55,0,0,0"
                                            Style="{StaticResource font_style}"/>
 
                                 </StackPanel>
@@ -425,110 +425,106 @@
                                 <ListViewItem.ToolTip>
 
                                     <ToolTip x:Name="tt_messages"
-                                         Content="Формирование и оформление дел"
+                                         Content="Электронные документы"
                                          Style="{StaticResource tt_style}"/>
 
                                 </ListViewItem.ToolTip>
 
                             </ListViewItem>
                         </Button>
-                        
+
                         <!--// Maps //-->
 
-                        <Button Background="#ffd500">
-                        <ListViewItem HorizontalAlignment="Left"
+                        <Button Click="Issuance_for_temporary_use_Click" Style="{StaticResource buttonMainGreen}" Width="530">
+                            <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
 
-                            <StackPanel Orientation="Horizontal"
+                                <StackPanel Orientation="Horizontal"
                                         Width="530">
 
-                                <Image Source="Assets/img_map.png"
+                                    <!--<Image Source="Assets/AddDoc.png"
                                        Stretch="None"
-                                       Margin="5,0,0,0" Height="40"/>
+                                       Margin="5,0,0,0" Height="40"/>-->
 
-                                <TextBlock Text="Выдача на временное пользование"
-                                           Margin="25,0,0,0"
+                                    <TextBlock Text="Выданные на временное пользование"
+                                           Margin="55,0,0,0"
                                            Style="{StaticResource font_style}"/>
 
-                            </StackPanel>
+                                </StackPanel>
 
-                            <!--// Tooltip //-->
+                                <!--// Tooltip //-->
 
-                            <ListViewItem.ToolTip>
+                                <ListViewItem.ToolTip>
 
-                                <ToolTip x:Name="tt_maps"
+                                    <ToolTip x:Name="tt_maps"
                                          Content="Maps"
                                          Style="{StaticResource tt_style}"/>
 
-                            </ListViewItem.ToolTip>
+                                </ListViewItem.ToolTip>
 
-                        </ListViewItem>
+                            </ListViewItem>
                         </Button>
 
                         <!--// Settings //-->
 
-                        <Button Background="#ffd500">        
-                        <ListViewItem HorizontalAlignment="Left"
+                        <Button Click="Write_off_of_documents_Click" Style="{StaticResource buttonMainGreen}" Width="530">
+                            <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
 
-                            <StackPanel Orientation="Horizontal"
+                                <StackPanel Orientation="Horizontal"
                                         Width="530">
 
-                                <Image Source="Assets/img_setting.png"
+                                    <!--<Image Source="Assets/AddDoc.png"
                                        Stretch="None"
-                                       Margin="5,0,0,0" RenderTransformOrigin="0.467,3.383"/>
+                                       Margin="5,0,0,0" RenderTransformOrigin="0.467,3.383"/>-->
 
-                                <TextBlock Text="Настройки"
-                                           Margin="25,0,0,0"
+                                    <TextBlock Text="Списание документов"
+                                           Margin="55,0,0,0"
                                            Style="{StaticResource font_style}"/>
 
-                            </StackPanel>
+                                </StackPanel>
 
-                            <!--// Tooltip //-->
+                                <!--// Tooltip //-->
 
-                            <ListViewItem.ToolTip>
+                                <ListViewItem.ToolTip>
 
-                                <ToolTip x:Name="tt_settings"
+                                    <ToolTip x:Name="tt_settings"
                                          Content="Settings"
                                          Style="{StaticResource tt_style}"/>
 
-                            </ListViewItem.ToolTip>
+                                </ListViewItem.ToolTip>
 
-                        </ListViewItem>
+                            </ListViewItem>
                         </Button>
 
-                        <!--// Sign Out //-->
-                        <Button Background="#ffd500">
-                        <ListViewItem HorizontalAlignment="Left"
+
+                        <Button Click="Creation_article_Click" Style="{StaticResource buttonMainGreen}" Width="530">
+                            <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
 
-                            <StackPanel Orientation="Horizontal"
+                                <StackPanel Orientation="Horizontal"
                                         Width="530">
 
-                                <Image Source="Assets/img_signout.png"
-                                       Stretch="None"
-                                       Margin="5,0,0,0"/>
 
-                                <TextBlock Text="Sign Out"
-                                           Margin="25,0,0,0"
+                                    <TextBlock Text="Добавление статьи хранения"
+                                           Margin="55,0,0,0"
                                            Style="{StaticResource font_style}"/>
 
-                            </StackPanel>
+                                </StackPanel>
 
-                            <!--// Tooltip //-->
 
-                            <ListViewItem.ToolTip>
+                                <ListViewItem.ToolTip>
 
-                                <ToolTip x:Name="tt_signout"
+                                    <ToolTip x:Name="tt_signout"
                                          Content="Sign Out"
                                          Style="{StaticResource tt_style}"/>
 
-                            </ListViewItem.ToolTip>
+                                </ListViewItem.ToolTip>
 
-                        </ListViewItem>
+                            </ListViewItem>
                         </Button>
 
                         <!--// Listview items style template //-->

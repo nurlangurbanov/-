@@ -32,18 +32,25 @@ namespace Архивариус
             }
             else
             {
-                Storage_article sa = new Storage_article
+                try
                 {
-                    Storage_article1 = Storage_articletxt.Text,
-                    Shelf_life_by_article = Shelf_life_by_articletxt.Text,
-                    Note_on_storage_article = Note_on_storage_articletxt.Text
-                };
-                Helper.GetContext().Storage_article.Add(sa);
-                Helper.GetContext().SaveChanges();
-                MessageBox.Show("Документ успешно добавлен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                Storage_articletxt.Text = "";
-                Shelf_life_by_articletxt.Text = "";
-                Note_on_storage_articletxt.Text = "";
+                    Storage_article sa = new Storage_article
+                    {
+                        Storage_article1 = Storage_articletxt.Text,
+                        Shelf_life_by_article = Shelf_life_by_articletxt.Text,
+                        Note_on_storage_article = Note_on_storage_articletxt.Text
+                    };
+                    Helper.GetContext().Storage_article.Add(sa);
+                    Helper.GetContext().SaveChanges();
+                    MessageBox.Show("Документ успешно добавлен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Storage_articletxt.Text = "";
+                    Shelf_life_by_articletxt.Text = "";
+                    Note_on_storage_articletxt.Text = "";
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка при добавление", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 

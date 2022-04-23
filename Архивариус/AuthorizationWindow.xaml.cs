@@ -54,7 +54,6 @@ namespace Архивариус
                         Helper.GetContext().SaveChanges();
                         MessageBox.Show("Вы вошли как Администратор!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                         RegistrationWindow adminWindow = new RegistrationWindow();
-                        //adminWindow.Title = "Администратор - " + userinfo;
                         this.Close();
                         adminWindow.ShowDialog();
                     }
@@ -67,11 +66,9 @@ namespace Архивариус
                         Helper.GetContext().Authorized_user_role.Add(au);
                         Helper.GetContext().SaveChanges();
                         MessageBox.Show("Вы вошли как Архивариус!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Creation_of_nomenclature_cases CC = new Creation_of_nomenclature_cases();
-                        //CC.Title = "Архивариус - " + userinfo;
+                        Main_Window MW = new Main_Window();
                         this.Close();
-                        CC.ShowDialog();
-
+                        MW.ShowDialog();
                     }
                 }
             }

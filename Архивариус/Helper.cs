@@ -17,7 +17,5 @@ namespace Архивариус
             }
             return _context;
         }
-        //public static int ID_user;
-        //public static int ID_order;
     }
 }

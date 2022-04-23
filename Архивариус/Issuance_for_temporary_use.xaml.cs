@@ -28,6 +28,7 @@ namespace Архивариус
         public void Load()
         {
             dtIssuance.ItemsSource = Helper.GetContext().Issuance.ToList();
+
         }
 
         private void Delete(object sender, RoutedEventArgs e)

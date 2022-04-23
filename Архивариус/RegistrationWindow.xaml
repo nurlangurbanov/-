@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Архивариус"
         mc:Ignorable="d"
-        Title="Регистрация" WindowStartupLocation="CenterScreen" Height="650" Width="1000" Background="Transparent" WindowStyle="None" AllowsTransparency="True">
+        Title="Администратор" WindowStartupLocation="CenterScreen" Height="650" Width="1000" Background="Transparent" WindowStyle="None" AllowsTransparency="True">
     <Grid>
         <!--<TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" Margin="0,40,0,0" Grid.RowSpan="2"/>
         <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" Margin="0,5,0,52" Grid.RowSpan="2"/>
@@ -75,7 +75,7 @@
                         <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
                         <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}"/>
                         <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
-                        <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
+                        <!--<DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>-->
                         <DataGridTextColumn Header="Роль" Binding="{Binding Role.Role_Name}"/>
                         <!--<DataGridTemplateColumn Width="auto">
                             <DataGridTemplateColumn.CellTemplate>

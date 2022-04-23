@@ -41,7 +41,6 @@ namespace Архивариус
             {
                 try
                 {
-                    //var ID_Archive = Helper.GetContext().Archive_work.FirstOrDefault(x => x.Title == Title.Text);
                     sqlConnection.Open();
                     string vivodID1 = @"SELECT MAX(ID_Authorized_user_role) FROM Authorized_user_role";
                     SqlCommand command1 = new SqlCommand(vivodID1, sqlConnection);

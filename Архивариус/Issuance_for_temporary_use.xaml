@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
 
         <Border Background="#ffd500" Padding="30" CornerRadius="25 0 0 25"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Margin="40,355,0,0" VerticalAlignment="Top" Width="129" Height="36" Click="Delete" Style="{StaticResource buttonMain}"/>
+        <Button Content="Возврат в архив" HorizontalAlignment="Left" Margin="36,355,0,0" VerticalAlignment="Top" Width="132" Height="36" Click="Delete" Style="{StaticResource buttonMain}"/>
 
         <Border Grid.Column="1" Padding="20" Background="#ffffff" CornerRadius="0 25 25 0" MouseDown="Border_MouseDown">
             <Grid>
@@ -41,14 +41,14 @@
 
                 </Button>
 
-                <DataGrid x:Name="dtIssuance" FontFamily="Time New Roman" FontSize="17" HorizontalAlignment="Left" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" Height="476" Margin="-12,24,-6,0" VerticalAlignment="Top" Width="778">
+                <DataGrid x:Name="dtIssuance" FontFamily="Time New Roman" FontSize="17" HorizontalAlignment="Left" AutoGenerateColumns="False" IsReadOnly="True" Height="476" Margin="-12,24,-6,0" VerticalAlignment="Top" Width="778">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Visibility="Hidden" Binding="{Binding ID_Issuance_index}"/>
-                        <DataGridTextColumn Header="Заголовок дела" Binding="{Binding Archive_work.Title}"/>
-                        <DataGridTextColumn Header="Кому выдано" Binding="{Binding To_whom_issued}"/>
-                        <DataGridTextColumn Header="Кем выдано" Binding="{Binding Reg.LastName}"/>
-                        <DataGridTextColumn Header="Дата выдачи" Binding="{Binding Date_of_issue}"/>
-                        <DataGridTextColumn Header="Дата возврата" Binding="{Binding Date_return}"/>
+                        <DataGridTextColumn Header="Заголовок дела:" Binding="{Binding Archive_work.Title}"/>
+                        <DataGridTextColumn Header="Кому выдано:" Binding="{Binding To_whom_issued}"/>
+                        <DataGridTextColumn Header="Кем выдано:" Binding="{Binding Reg.LastName}"/>
+                        <DataGridTextColumn Header="Дата выдачи:" Binding="{Binding Date_of_issue, StringFormat=dd.MM.yyyy}"/>
+                        <DataGridTextColumn Header="Дата возврата:" Binding="{Binding Date_return, StringFormat=dd.MM.yyyy}"/>
                         <DataGridTextColumn Header="Кол - во дел:" Binding="{Binding Archive_work.Number_of_cases}"/>
                     </DataGrid.Columns>
                 </DataGrid>

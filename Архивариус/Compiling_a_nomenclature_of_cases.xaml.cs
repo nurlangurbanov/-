@@ -35,34 +35,37 @@ namespace Архивариус
             }
             else
             {
-                try
+                if (Start.SelectedDate < Finish.SelectedDate)
                 {
-                    var ID_Storage_article = Helper.GetContext().Storage_article.FirstOrDefault(x => x.Storage_article1 == Storage_articleCombo.Text);
-                    Archive_work aw = new Archive_work
+                    try
                     {
-                        Сase_index = Convert.ToInt32(Index.Text),
-                        YearCreate = Convert.ToDateTime(Start.SelectedDate),
-                        YearFinish = Convert.ToDateTime(Finish.SelectedDate),
-                        Title = Title.Text,
-                        Note = Note.Text,
-                        Number_of_cases = Convert.ToInt32(Number.Text),
-                        Storage_article_ID = ID_Storage_article.ID_Storage_article,
-                        Signature_documents_ID = 1
-                    };
-                    Helper.GetContext().Archive_work.Add(aw);
-                    Helper.GetContext().SaveChanges();
-                    MessageBox.Show("Документ успешно сохранен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Start.SelectedDate = null;
-                    Finish.SelectedDate = null;
-                    Index.Text = "";
-                    Title.Text = "";
-                    Note.Text = "";
-                    Number.Text = "";
-                    Storage_articleCombo.Text = "";
-                }
-                catch
-                {
-                    MessageBox.Show("Ошибка при добавление", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+                        var ID_Storage_article = Helper.GetContext().Storage_article.FirstOrDefault(x => x.Storage_article1 == Storage_articleCombo.Text);
+                        Archive_work aw = new Archive_work
+                        {
+                            Сase_index = Convert.ToInt32(Index.Text),
+                            YearCreate = Convert.ToDateTime(Start.SelectedDate),
+                            YearFinish = Convert.ToDateTime(Finish.SelectedDate),
+                            Title = Title.Text,
+                            Note = Note.Text,
+                            Number_of_cases = Convert.ToInt32(Number.Text),
+                            Storage_article_ID = ID_Storage_article.ID_Storage_article,
+                            Signature_documents_ID = 1
+                        };
+                        Helper.GetContext().Archive_work.Add(aw);
+                        Helper.GetContext().SaveChanges();
+                        MessageBox.Show("Документ успешно сохранен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Start.SelectedDate = null;
+                        Finish.SelectedDate = null;
+                        Index.Text = "";
+                        Title.Text = "";
+                        Note.Text = "";
+                        Number.Text = "";
+                        Storage_articleCombo.Text = "";
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка при добавление", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
             }
         }
