@@ -16,7 +16,6 @@
             <StackPanel VerticalAlignment="Center">
                 <Image Source="/Assets/AddDoc.png" Width="160" Height="160" Margin="0 0 0 40"/>
                 <TextBlock TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="Black" Height="124"><Run Text="Добавление"/><LineBreak/><Run Text="архивного"/><LineBreak/><Run Text="документа"/></TextBlock>
-                <CheckBox Name="ImageCheck"/>
             </StackPanel>
         </Border>
 
@@ -63,9 +62,12 @@
                     <DatePicker Name="Finish" HorizontalAlignment="Left" Margin="626,451,0,0" VerticalAlignment="Top"/>
                     <Button Content="Сохранить" HorizontalAlignment="Left" Margin="634,504,0,0" VerticalAlignment="Top" Width="92" Height="36" Click="Save" Style="{StaticResource buttonMainGreen}"/>
                     <Button Content="Добавить статью хранения" HorizontalAlignment="Left" Margin="362,504,0,0" VerticalAlignment="Top" Width="228" Height="36" Click="Insert_article" Style="{StaticResource buttonMain}"/>
+                    <Button Name="Button_InsertImage" Content="Добавить картинку" HorizontalAlignment="Left" Margin="104,504,0,0" VerticalAlignment="Top" Width="228" Height="36" Click="Insert_image" Style="{StaticResource buttonMain}"/>
+                    <TextBlock FontSize="18" Text="Фотография документа:" Style="{StaticResource text}" Margin="407,55,137,0" VerticalAlignment="Top"/>
                 </Grid>
             </Grid>
         </Border>
+        <CheckBox x:Name="ImageCheck" Margin="642,93,102,493" Grid.Column="1" Click="ImageCheck_Checked"/>
 
     </Grid>
 </Window>

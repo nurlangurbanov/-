@@ -29,7 +29,9 @@ namespace Архивариус
         public int Number_of_cases { get; set; }
         public int Storage_article_ID { get; set; }
         public int Signature_documents_ID { get; set; }
+        public Nullable<int> Images_ID { get; set; }
     
+        public virtual Images Images { get; set; }
         public virtual Signature_documents Signature_documents { get; set; }
         public virtual Storage_article Storage_article { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

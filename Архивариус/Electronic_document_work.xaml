@@ -61,7 +61,7 @@
                         <DataGridTemplateColumn Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Открыт" Click="Open" Style="{StaticResource buttonMainGreen}"/>
+                                    <Button Content="Открыть" Click="Open" Style="{StaticResource buttonMainGreen}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

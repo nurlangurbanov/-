@@ -1,0 +1,42 @@
+﻿<Window x:Class="Архивариус.ImagesArchive_insert"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Архивариус"
+        mc:Ignorable="d"
+        Title="Electronic_document_work" WindowStartupLocation="CenterScreen" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True">
+
+    <Grid>
+        <Button x:Name="Photo" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Background="White" Click="Photo_Click" Height="170">
+            <StackPanel Orientation="Horizontal">
+                <Image Name="photo_archive" Source="Assets\Auth.png" Margin="477,183,288.6,131.4"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="Closebtn"
+                        BorderThickness="0"
+                        Click="Close_Click" Margin="778,0,2,432">
+
+            <Button.Background>
+
+                <ImageBrush ImageSource="Assets/XXX.png"/>
+
+            </Button.Background>
+
+        </Button>
+
+        <Button x:Name="Collapsebtn"
+                        BorderThickness="0"
+                        Click="Collapse_Click" Margin="753,0,27,432">
+
+            <Button.Background>
+
+                <ImageBrush ImageSource="Assets/Minus.png"/>
+
+            </Button.Background>
+
+        </Button>
+
+        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="358,350,0,0" VerticalAlignment="Top" Width="92" Height="36" Click="Save" Style="{StaticResource buttonMainGreen}"/>
+    </Grid>
+</Window>
