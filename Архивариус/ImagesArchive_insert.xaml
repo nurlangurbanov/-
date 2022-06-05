@@ -8,9 +8,14 @@
         Title="Electronic_document_work" WindowStartupLocation="CenterScreen" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True">
 
     <Grid>
-        <Button x:Name="Photo" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Background="White" Click="Photo_Click" Height="170">
+        <!--<Button x:Name="Photo" HorizontalAlignment="Center" VerticalAlignment="Center" Width="170" Background="White" Click="Photo_Click" Height="170">
             <StackPanel Orientation="Horizontal">
                 <Image Name="photo_archive" Source="Assets\Auth.png" Margin="477,183,288.6,131.4"/>
+            </StackPanel>
+        </Button>-->
+        <Button x:Name="Photo" HorizontalAlignment="Center" Margin="0,147,0,0" VerticalAlignment="Top" Width="170" Background="White" Click="Photo_Click" Height="176">
+            <StackPanel Orientation="Horizontal">
+                <Image Name="photo_archive" Margin="0,0,5,0" Width="152" Height="165"/>
             </StackPanel>
         </Button>
         <Button x:Name="Closebtn"
@@ -37,6 +42,6 @@
 
         </Button>
 
-        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="358,350,0,0" VerticalAlignment="Top" Width="92" Height="36" Click="Save" Style="{StaticResource buttonMainGreen}"/>
+        <Button Content="Сохранить" HorizontalAlignment="Center" Margin="0,349,0,0" VerticalAlignment="Top" Width="92" Height="36" Click="Save" Style="{StaticResource buttonMainGreen}"/>
     </Grid>
 </Window>
