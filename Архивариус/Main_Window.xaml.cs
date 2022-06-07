@@ -100,5 +100,12 @@ namespace Архивариус
             CNC.ShowDialog();
             this.Show();
         }
+
+        private void Creation_category_Click(object sender, RoutedEventArgs e)
+        {
+            Create_category CNC = new Create_category();
+            CNC.ShowDialog();
+            this.Show();
+        }
     }
 }

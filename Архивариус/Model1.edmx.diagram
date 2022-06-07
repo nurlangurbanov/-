@@ -4,17 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c41e4fc776a445fb96b001be4bd9210f" Name="Diagram1">
-        <EntityTypeShape EntityType="gr682_gnmModel.Archive_of_electronic_documents" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+      <Diagram DiagramId="e2aeee727202479ea9e9a85b3cae40a1" Name="Diagram1">
+        <EntityTypeShape EntityType="gr682_gnmModel.Archive_of_electronic_documents" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="gr682_gnmModel.Archive_work" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="gr682_gnmModel.Authorized_user_role" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="gr682_gnmModel.Images" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="gr682_gnmModel.Issuance" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="gr682_gnmModel.Reg" Width="1.5" PointX="6" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="gr682_gnmModel.Role" Width="1.5" PointX="3.75" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="gr682_gnmModel.Signature_documents" Width="1.5" PointX="3.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="gr682_gnmModel.Storage_article" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Authorized_user_role" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Category" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Images" Width="1.5" PointX="3.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Issuance" Width="1.5" PointX="8.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Reg" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Role" Width="1.5" PointX="3.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Signature_documents" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr682_gnmModel.Storage_article" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <AssociationConnector Association="gr682_gnmModel.FK__Archive_o__Stora__0E591826" ManuallyRouted="false" />
+        <AssociationConnector Association="gr682_gnmModel.FK__Archive_w__Categ__1F83A428" ManuallyRouted="false" />
         <AssociationConnector Association="gr682_gnmModel.FK__Archive_w__Image__16EE5E27" ManuallyRouted="false" />
         <AssociationConnector Association="gr682_gnmModel.FK__Archive_w__Signa__113584D1" ManuallyRouted="false" />
         <AssociationConnector Association="gr682_gnmModel.FK__Archive_w__Stora__6CF8245B" ManuallyRouted="false" />

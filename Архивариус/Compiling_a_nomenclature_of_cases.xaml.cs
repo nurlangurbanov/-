@@ -20,19 +20,19 @@ namespace Архивариус
     public partial class Compiling_a_nomenclature_of_cases : Window
     {
         public bool click = false;
-
         SQLRequest SQLRequest = new SQLRequest();
 
         public Compiling_a_nomenclature_of_cases()
         {
             InitializeComponent();
             Storage_articleCombo.ItemsSource = Helper.GetContext().Storage_article.ToList();
+            Category_Combo.ItemsSource = Helper.GetContext().Category.ToList();
             Button_InsertImage.Visibility = Visibility.Hidden;
         }
 
         private void Save(object sender, RoutedEventArgs e)
         {
-            if (Index.Text == "" || Title.Text == "" || Note.Text == "" || Number.Text == "" || Start == null || Finish == null || Storage_articleCombo == null)
+            if (Index.Text == "" || Title.Text == "" || Note.Text == "" || Number.Text == "" || Start == null || Finish == null || Storage_articleCombo == null || Category_Combo == null)
             {
                 MessageBox.Show("Пустые значения!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -44,6 +44,7 @@ namespace Архивариус
                     {
                         int IDmax = 0;
                         var ID_Storage_article = Helper.GetContext().Storage_article.FirstOrDefault(x => x.Storage_article1 == Storage_articleCombo.Text);
+                        var ID_Category = Helper.GetContext().Category.FirstOrDefault(x => x.Category1 == Category_Combo.Text);
 
                         bool? check = ImageCheck.IsChecked;
                         if (check == true)
@@ -60,7 +61,8 @@ namespace Архивариус
                                     Number_of_cases = Convert.ToInt32(Number.Text),
                                     Storage_article_ID = ID_Storage_article.ID_Storage_article,
                                     Signature_documents_ID = 1,
-                                    Images_ID = SQLRequest.ImFunc(IDmax)
+                                    Images_ID = SQLRequest.ImFunc(IDmax),
+                                    Category_ID = ID_Category.ID_Category
                                 };
                                 Helper.GetContext().Archive_work.Add(aw);
                                 Helper.GetContext().SaveChanges();
@@ -72,6 +74,7 @@ namespace Архивариус
                                 Note.Text = "";
                                 Number.Text = "";
                                 Storage_articleCombo.Text = "";
+                                Category_Combo.Text = "";
                             }
                             else
                             {
@@ -90,6 +93,7 @@ namespace Архивариус
                                 Number_of_cases = Convert.ToInt32(Number.Text),
                                 Storage_article_ID = ID_Storage_article.ID_Storage_article,
                                 Signature_documents_ID = 1,
+                                Category_ID = ID_Category.ID_Category
                             };
                             Helper.GetContext().Archive_work.Add(aw);
                             Helper.GetContext().SaveChanges();
@@ -101,6 +105,7 @@ namespace Архивариус
                             Note.Text = "";
                             Number.Text = "";
                             Storage_articleCombo.Text = "";
+                            Category_Combo.Text = "";
                         }
                     }
                     catch

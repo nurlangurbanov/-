@@ -15,42 +15,39 @@ using System.Windows.Shapes;
 namespace Архивариус
 {
     /// <summary>
-    /// Логика взаимодействия для Issuance_for_temporary_use.xaml
+    /// Логика взаимодействия для Create_category.xaml
     /// </summary>
-    public partial class Issuance_for_temporary_use : Window
+    public partial class Create_category : Window
     {
-        public Issuance_for_temporary_use()
+        public Create_category()
         {
             InitializeComponent();
-            Load();
         }
 
-        public void Load()
+        private void Save(object sender, RoutedEventArgs e)
         {
-
-            dtIssuance.ItemsSource = Helper.GetContext().Issuance.ToList(); 
-        }
-
-        private void Delete(object sender, RoutedEventArgs e)
-        {
-            var Issuance = dtIssuance.SelectedItems.Cast<Issuance>().ToList();
-
-            if (MessageBox.Show($"Вы точно хотите удалить следующее {Issuance.Count()} элементов ?", "Внимание",
-                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (Name_category.Text == "")
+            {
+                MessageBox.Show("Пустые значения!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
             {
                 try
                 {
-                    Helper.GetContext().Issuance.RemoveRange(Issuance);
+                    Category cg = new Category
+                    {
+                        Category1 = Name_category.Text,
+                    };
+                    Helper.GetContext().Category.Add(cg);
                     Helper.GetContext().SaveChanges();
-                    MessageBox.Show("Данные удалены!");
-                    Load();
+                    MessageBox.Show("Документ успешно добавлен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Name_category.Text = "";
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Ошибка при создании", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
-            Load();
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -63,7 +60,7 @@ namespace Архивариус
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         private void Collapse_Click(object sender, RoutedEventArgs e)

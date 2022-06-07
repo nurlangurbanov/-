@@ -480,7 +480,7 @@
                                        Stretch="None"
                                        Margin="5,0,0,0" RenderTransformOrigin="0.467,3.383"/>-->
 
-                                    <TextBlock Text="Списание документов"
+                                    <TextBlock Text="Списанные документы"
                                            Margin="55,0,0,0"
                                            Style="{StaticResource font_style}"/>
 
@@ -515,14 +515,23 @@
 
                                 </StackPanel>
 
+                            </ListViewItem>
+                        </Button>
 
-                                <ListViewItem.ToolTip>
+                        <Button Click="Creation_category_Click" Style="{StaticResource buttonMainGreen}" Width="530">
+                            <ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                                      >
 
-                                    <ToolTip x:Name="tt_signout"
-                                         Content="Sign Out"
-                                         Style="{StaticResource tt_style}"/>
+                                <StackPanel Orientation="Horizontal"
+                                        Width="530">
 
-                                </ListViewItem.ToolTip>
+
+                                    <TextBlock Text="Создание категории"
+                                           Margin="55,0,0,0"
+                                           Style="{StaticResource font_style}"/>
+
+                                </StackPanel>
 
                             </ListViewItem>
                         </Button>

@@ -29,6 +29,7 @@
           <Property Name="Storage_article_ID" Type="int" Nullable="false" />
           <Property Name="Signature_documents_ID" Type="int" Nullable="false" />
           <Property Name="Images_ID" Type="int" />
+          <Property Name="Category_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Authorized_user_role">
           <Key>
@@ -37,6 +38,13 @@
           <Property Name="ID_Authorized_user_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Reg_ID" Type="int" Nullable="false" />
           <Property Name="Date_authorized_user_role" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID_Category" />
+          </Key>
+          <Property Name="ID_Category" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -101,6 +109,18 @@
             </Principal>
             <Dependent Role="Archive_of_electronic_documents">
               <PropertyRef Name="Storage_article_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Archive_w__Categ__1F83A428">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Archive_work" Type="Self.Archive_work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID_Category" />
+            </Principal>
+            <Dependent Role="Archive_work">
+              <PropertyRef Name="Category_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -192,6 +212,7 @@
           <EntitySet Name="Archive_of_electronic_documents" EntityType="Self.Archive_of_electronic_documents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Archive_work" EntityType="Self.Archive_work" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Authorized_user_role" EntityType="Self.Authorized_user_role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Issuance" EntityType="Self.Issuance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reg" EntityType="Self.Reg" Schema="dbo" store:Type="Tables" />
@@ -201,6 +222,10 @@
           <AssociationSet Name="FK__Archive_o__Stora__0E591826" Association="Self.FK__Archive_o__Stora__0E591826">
             <End Role="Storage_article" EntitySet="Storage_article" />
             <End Role="Archive_of_electronic_documents" EntitySet="Archive_of_electronic_documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Archive_w__Categ__1F83A428" Association="Self.FK__Archive_w__Categ__1F83A428">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Archive_work" EntitySet="Archive_work" />
           </AssociationSet>
           <AssociationSet Name="FK__Archive_w__Image__16EE5E27" Association="Self.FK__Archive_w__Image__16EE5E27">
             <End Role="Images" EntitySet="Images" />
@@ -261,6 +286,8 @@
           <Property Name="Storage_article_ID" Type="Int32" Nullable="false" />
           <Property Name="Signature_documents_ID" Type="Int32" Nullable="false" />
           <Property Name="Images_ID" Type="Int32" />
+          <Property Name="Category_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Archive_w__Categ__1F83A428" FromRole="Archive_work" ToRole="Category" />
           <NavigationProperty Name="Images" Relationship="Self.FK__Archive_w__Image__16EE5E27" FromRole="Archive_work" ToRole="Images" />
           <NavigationProperty Name="Signature_documents" Relationship="Self.FK__Archive_w__Signa__113584D1" FromRole="Archive_work" ToRole="Signature_documents" />
           <NavigationProperty Name="Storage_article" Relationship="Self.FK__Archive_w__Stora__6CF8245B" FromRole="Archive_work" ToRole="Storage_article" />
@@ -274,6 +301,14 @@
           <Property Name="Reg_ID" Type="Int32" Nullable="false" />
           <Property Name="Date_authorized_user_role" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Reg" Relationship="Self.FK__Authorize__Reg_I__0A888742" FromRole="Authorized_user_role" ToRole="Reg" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID_Category" />
+          </Key>
+          <Property Name="ID_Category" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Archive_work" Relationship="Self.FK__Archive_w__Categ__1F83A428" FromRole="Category" ToRole="Archive_work" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -348,6 +383,18 @@
             </Principal>
             <Dependent Role="Archive_of_electronic_documents">
               <PropertyRef Name="Storage_article_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Archive_w__Categ__1F83A428">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Archive_work" Type="Self.Archive_work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID_Category" />
+            </Principal>
+            <Dependent Role="Archive_work">
+              <PropertyRef Name="Category_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -439,6 +486,7 @@
           <EntitySet Name="Archive_of_electronic_documents" EntityType="Self.Archive_of_electronic_documents" />
           <EntitySet Name="Archive_work" EntityType="Self.Archive_work" />
           <EntitySet Name="Authorized_user_role" EntityType="Self.Authorized_user_role" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="Images" EntityType="Self.Images" />
           <EntitySet Name="Issuance" EntityType="Self.Issuance" />
           <EntitySet Name="Reg" EntityType="Self.Reg" />
@@ -448,6 +496,10 @@
           <AssociationSet Name="FK__Archive_o__Stora__0E591826" Association="Self.FK__Archive_o__Stora__0E591826">
             <End Role="Storage_article" EntitySet="Storage_article" />
             <End Role="Archive_of_electronic_documents" EntitySet="Archive_of_electronic_documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Archive_w__Categ__1F83A428" Association="Self.FK__Archive_w__Categ__1F83A428">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Archive_work" EntitySet="Archive_work" />
           </AssociationSet>
           <AssociationSet Name="FK__Archive_w__Image__16EE5E27" Association="Self.FK__Archive_w__Image__16EE5E27">
             <End Role="Images" EntitySet="Images" />
@@ -508,6 +560,7 @@
                 <ScalarProperty Name="Storage_article_ID" ColumnName="Storage_article_ID" />
                 <ScalarProperty Name="Signature_documents_ID" ColumnName="Signature_documents_ID" />
                 <ScalarProperty Name="Images_ID" ColumnName="Images_ID" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -517,6 +570,14 @@
                 <ScalarProperty Name="ID_Authorized_user_role" ColumnName="ID_Authorized_user_role" />
                 <ScalarProperty Name="Reg_ID" ColumnName="Reg_ID" />
                 <ScalarProperty Name="Date_authorized_user_role" ColumnName="Date_authorized_user_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="gr682_gnmModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="ID_Category" ColumnName="ID_Category" />
+                <ScalarProperty Name="Category1" ColumnName="Category" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

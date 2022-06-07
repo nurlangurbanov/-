@@ -31,6 +31,7 @@ namespace Архивариус
         public void Load()
         {
             dtArchive.ItemsSource = Helper.GetContext().Archive_work.Where(x => x.Signature_documents_ID == 1).ToList();
+            Category_Combo.ItemsSource = Helper.GetContext().Category.ToList();
         }
 
         private void Insert(object sender, RoutedEventArgs e)
@@ -43,24 +44,69 @@ namespace Архивариус
 
         private void Update(object sender, RoutedEventArgs e)
         {
-            try
+            if (MessageBox.Show($"Вы будете изменять скан ?", "Внимание",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
             {
-                Compiling_a_nomenclature_of_cases cc = new Compiling_a_nomenclature_of_cases();
                 Archive_work worker = (Archive_work)dtArchive.SelectedItem;
-                cc.Index.Text = Convert.ToString(worker.Сase_index);
-                cc.Start.SelectedDate = worker.YearCreate;
-                cc.Finish.SelectedDate = worker.YearFinish;
-                cc.Title.Text = worker.Title;
-                cc.Note.Text = worker.Note;
-                cc.Number.Text = Convert.ToString(worker.Number_of_cases);
-                cc.Storage_articleCombo.SelectedItem = worker.Storage_article;
-                cc.ShowDialog();
-                Helper.GetContext().SaveChanges();
-                Load();
+                if (worker == null)
+                {
+                    MessageBox.Show("Не выбран документ!");
+                }
+                else
+                    try
+                    {
+                        Compiling_a_nomenclature_of_cases cc = new Compiling_a_nomenclature_of_cases();
+                        cc.Text.Visibility = Visibility.Hidden;
+                        cc.ImageCheck.Visibility = Visibility.Hidden;
+                        cc.Text_InsertImage.Visibility = Visibility.Hidden;
+                        var ID_Image = Helper.GetContext().Archive_work.FirstOrDefault(x => x.Images_ID == worker.Images_ID); 
+                        cc.Index.Text = Convert.ToString(worker.Сase_index);
+                        cc.Start.SelectedDate = worker.YearCreate;
+                        cc.Finish.SelectedDate = worker.YearFinish;
+                        cc.Title.Text = worker.Title;
+                        cc.Note.Text = worker.Note;
+                        cc.Number.Text = Convert.ToString(worker.Number_of_cases);
+                        cc.Storage_articleCombo.SelectedItem = worker.Storage_article;
+                        cc.Category_Combo.SelectedItem = worker.Category;
+                        cc.ShowDialog();
+                        Load();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка!");
+                    }
             }
-            catch
+            else
             {
-                MessageBox.Show("Не выбран документ!");
+                Archive_work worker = (Archive_work)dtArchive.SelectedItem;
+                if (worker == null)
+                {
+                    MessageBox.Show("Не выбран документ!");
+                }
+                else
+                    try
+                    {
+                        Compiling_a_nomenclature_of_cases cc = new Compiling_a_nomenclature_of_cases();
+                        cc.Text.Visibility = Visibility.Hidden;
+                        cc.ImageCheck.Visibility = Visibility.Hidden;
+                        cc.Text_InsertImage.Visibility = Visibility.Hidden;
+                        cc.Button_InsertImage.Visibility = Visibility;   
+                        var ID_Image = Helper.GetContext().Archive_work.FirstOrDefault(x => x.Images_ID == worker.Images_ID);
+                        cc.Index.Text = Convert.ToString(worker.Сase_index);
+                        cc.Start.SelectedDate = worker.YearCreate;
+                        cc.Finish.SelectedDate = worker.YearFinish;
+                        cc.Title.Text = worker.Title;
+                        cc.Note.Text = worker.Note;
+                        cc.Number.Text = Convert.ToString(worker.Number_of_cases);
+                        cc.Storage_articleCombo.SelectedItem = worker.Storage_article;
+                        cc.Category_Combo.SelectedItem = worker.Category;
+                        cc.ShowDialog();
+                        Load();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ошибка!");
+                    }
             }
         }
 
@@ -181,6 +227,13 @@ namespace Архивариус
         private void Collapse_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void Category_Combo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //var ID_Category = Convert.ToInt32(Helper.GetContext().Category.FirstOrDefault(x => x.Category1 == Category_Combo.Text));
+
+            //dtArchive.ItemsSource = Helper.GetContext().Archive_work.Where(x => x.Category_ID == ID_Category).ToList();
         }
     }
 }
